@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/plugins/ndop_downloader" >
+        <file>icon.png</file>
+    </qresource>
+</RCC>

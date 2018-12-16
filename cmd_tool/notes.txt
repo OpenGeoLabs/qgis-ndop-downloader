@@ -1,0 +1,14 @@
+J:
+* Používej pep8 linter - mezery, šířky řádků, 
+* doplň komentáře k funkcím
+* arg_pars voláš asi 20x, stačí jednou a podržet si hodnoty v paměti
+* funkce `seznam` používala nesmyslně odkaz na pole argumentů - přitom se
+  používá jenom jeden (keyword)
+* snazaný nepoužívaný proměnný
+* používej if __name__ == "__main__"
+* get_ndop_data je nepřehledně dlouhá, chtělo by to rozsekat
+
+O:
+# command line tool - umožní pouze stáhnout data podle
+# argumentů, pro hromadné stahování ve smyčkách si můžou naimportovat skript.
+# QGIS plugin, by měl usnadnit práci pro běžné uživatelé, úředníky
