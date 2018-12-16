@@ -205,7 +205,10 @@ class NDOPDownloader:
 
             search_payload = ndop.get_search_pars(taxon=taxon,region=region)
 
-            data_path = Path(os.path.dirname(os.path.realpath(__file__)),"bin")
+            data_path = Path(
+                os.path.dirname(os.path.realpath(__file__)),
+                "cmd_tool"
+            )
             ndop.get_ndop_data(
                 username,
                 password,
