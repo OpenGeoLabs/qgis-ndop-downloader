@@ -225,7 +225,7 @@ class NDOPDownloader:
             )
 
             for filename in os.listdir(data_path):
-                if filename.startswith("data"):
+                if filename.endswith("zip"):
                     layer = iface.addVectorLayer(str(Path(data_path,filename)), "", "ogr")
                     if not layer:
                         print("Layer failed to load!")
