@@ -193,8 +193,14 @@ class NDOPDownloader:
         # See if OK was pressed
         
         if result:
-            username = self.dlg.line_user.text()
-            password = self.dlg.line_pass.text()
+            args = ndop.args_parser()
+            
+            if self.dlg.line_user.text() == '':
+                username = args.user
+                password = args.password
+            else:
+                username = self.dlg.line_user.text()
+                password = self.dlg.line_pass.text()
 
             taxon = self.dlg.line_taxon.text()
             region = self.dlg.line_region.text()
@@ -209,6 +215,8 @@ class NDOPDownloader:
                 os.path.dirname(os.path.realpath(__file__)),
                 "cmd_tool"
             )
+
+            
             ndop.get_ndop_data(
                 username,
                 password,
