@@ -193,11 +193,14 @@ class NDOPDownloader:
         # See if OK was pressed
         
         if result:
-            args = ndop.args_parser()
             
             if self.dlg.line_user.text() == '':
-                username = args.user
-                password = args.password
+                try:
+                    args = ndop.args_parser()
+                    username = args.user
+                    password = args.password
+                except:
+                    print("Kongigurační soubor nenalezen") 
             else:
                 username = self.dlg.line_user.text()
                 password = self.dlg.line_pass.text()
