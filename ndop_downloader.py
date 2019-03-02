@@ -31,8 +31,8 @@ from .resources import *
 from .ndop_downloader_dialog import NDOPDownloaderDialog
 import os.path
 from pathlib import Path
-from .cmd_tool import ndop
 from qgis.utils import iface
+from . import ndop
 
 class NDOPDownloader:
     """QGIS Plugin Implementation."""
@@ -196,7 +196,7 @@ class NDOPDownloader:
             
             if self.dlg.line_user.text() == '':
                 try:
-                    args = ndop.args_parser()
+                    args = args_parser()
                     username = args.user
                     password = args.password
                 except:
@@ -212,7 +212,7 @@ class NDOPDownloader:
 
 #           polygon=self.dlg.mMapLayerComboBox.currentLayer()
 
-            search_payload = ndop.get_search_pars(taxon=taxon,region=region)
+            search_payload = get_search_pars(taxon=taxon,region=region)
 
             data_path = Path(
                 os.path.dirname(os.path.realpath(__file__)),
@@ -220,7 +220,7 @@ class NDOPDownloader:
             )
 
             
-            ndop.get_ndop_data(
+            get_ndop_data(
                 username,
                 password,
                 search_payload,
