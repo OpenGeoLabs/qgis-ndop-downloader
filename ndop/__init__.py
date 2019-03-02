@@ -1,23 +1,9 @@
-#!/usr/bin/python3
-# -*- coding: utf-8 -*-
-
-# TODO
-#   * popis/napoveda/dokumentace
-#   * dalsi parametry zdroju
-#   * pridat casy odezvy serveru
-#   * zpracovani vystupu
-#   * vytvorit konfiguracni soubor s prihlasovacimi udaji
-#   * transformace souřadnic z vektorové vrstvy
-
+import pandas as pd
 import requests
+import configparser
 import re
 import urllib
-import pandas as pd
-import argparse
 import json
-import sys
-from pathlib import Path
-import configparser
 
 LOGIN_URL = 'https://login.nature.cz/login.php?appid=59'
 SEARCH_URL = ('https://portal.nature.cz/nd/find.php?akce=seznam&opener='
@@ -54,114 +40,13 @@ def list_of_val(filt_attr, keyword):
     
     return(dt)
 
-def args_parser():
-    """
-    Parse command line arguments
-    """
-    parser = argparse.ArgumentParser(
-        description=('Download data (.csv, .shp) from NDOP based on input '
-                    'parametres. Unlike the offical web filter, its possible '
-                    'to input polygon layer for search in area and amount of '
-                    'results is not limited. Login can be stored in '
-                    'configuration file ".ndop.cfg".')
-    )
+def read_config(path):
+	config = configparser.ConfigParser()
+	config.read(path)
+	username = config.get('login', 'username')
+	password = config.get('login', 'password')
 
-    parser.add_argument(
-        '--user', help='login (user name or email)'
-    )
-    parser.add_argument(
-        '--password', help='ISOP password'
-    )
-    parser.add_argument(
-        '--output', help='path with output filenames prefix',
-        default=str(Path(Path.cwd(),"data"))
-    )
-
-    parser.add_argument(
-        '--taxon', help='taxon name (i.e. "mantis religiosa")'
-    )
-
-    parser.add_argument(
-        '--region', help='region of iterest (i.e. town , protected area)'
-    )
-    parser.add_argument(
-        '--polygon', help='path to poygon layer (EPSG:5514) that define the'
-        'search area. Function takes first feature of the layer'
-    )
-
-    parser.add_argument(
-        '--month_from', help='get data only from a certain month in season '
-        '(number)'
-    )
-    parser.add_argument(
-        '--month_to', help='get data only to a certain month in season '
-        '(number)'
-    )
-    parser.add_argument(
-        '--date_from', help='get data from a certain date (d.m.yyyy)'
-    )
-    parser.add_argument(
-        '--date_to', help='get data only to a certain date (d.m.yyyy)'
-    )
-
-    parser.add_argument(
-        '--author', help='author surname and firstname (i.e. "Kaláb Oto")'
-    )
-
-    parser.add_argument(
-        '--config',
-        help='path to the config file with login and password.'
-        ' Default path for file is: "{}"'.format(Path(Path.home(),
-        ".ndop.cfg")), default=Path(Path.home(), ".ndop.cfg")
-    )
-
-
-    args = parser.parse_args()
-
-    def read_config(path):
-        config = configparser.ConfigParser()
-        config.read(args.config)
-        username = config.get('login', 'username')
-        password = config.get('login', 'password')
-
-        return (username, password)
-
-    if args.user and args.password:
-         pass
-    elif args.user and not args.password or \
-          not args.user and args.password:
-         fail("Input username and password")
-    elif args.config:
-         if not Path.is_file(Path(args.config)):
-             fail("Configuration file {} not found".format(args.config))
-         else:
-              args.user, args.password = read_config(args.config)
-    elif Path.is_file(Path.home(), '.ndop.cfg'):
-             args.user, args.password = read_config(Path(Path.home(),
-             '.ndop.cfg'))
-    else:
-         fail("There is no username and password or config file")  
-
-    return args
-
-
-def poly (polygon):
-    """
-    Parse geometry of polygon layers first feature to NDOP input format
-    """
-    import fiona
-
-    shape = fiona.open(polygon)
-    first = next(iter(shape))
-    bb = shape.bounds
-
-    polygon = '{},"xmin":{},"xmax":{},"ymin":{},"ymax":{} {}'.format(
-        str(first['geometry']).replace("(","[").replace(")","]") \
-        .replace("'","\"")[:-1],
-        bb[0],bb[2],bb[1],bb[3],"}"
-    )
-
-    return polygon
+	return (username, password)
 
 def get_search_pars(
         author='', taxon='', region=None, polygon=None, date_to='',
@@ -226,9 +111,9 @@ def get_search_pars(
         'but_co': 'rf',
         'pagesizeX': 500
     }
-
+	
     if polygon is not None:
-        search_payload['parametryZakresu'] = poly(polygon) 
+        search_payload['parametryZakresu'] = polygon
 
     if region is not None:
         df = list_of_val('multiple', region)
@@ -366,29 +251,3 @@ def get_ndop_data(username, password, search_payload, output_name):
             urllib.request.urlretrieve(i, filename)
             print("SHP downloaded: " + filename)
     print("Done")
-
-def main():
-
-    args = args_parser()
-    search_parameters = get_search_pars(args.author, args.taxon, args.region,
-                                        args.polygon, args.date_to,
-                                        args.date_from, args.month_to,
-                                        args.month_from)
-
-    if type(search_parameters) is not dict:
-        print(
-            ("More than one region was found :\n {} "
-             "\n\nSpecify the input value (name or code)"
-             ).format(search_parameters)
-        )
-    else:
-        get_ndop_data(
-            args.user,
-            args.password,
-            search_parameters,
-            args.output
-        )
-
-if __name__ == "__main__":
-
-    main()
