@@ -144,7 +144,9 @@ def get_search_pars(
                     print(i,"\n",50*"-")
                 else:
                     print(i)
-            print("\nSpecify the exact input value (name or code)")
+            print(("\nPlease specify the unique or exact input value"
+                  " ie: '{}'").format(df[1][0])
+                 )
             return None
     return search_payload
 
