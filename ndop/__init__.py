@@ -257,10 +257,8 @@ def get_ndop_data(username, password, search_payload, output_name):
         reader = csv.reader(f, delimiter=';')
         if counter == 1: 
             csv_table.append(list(reader)[1:])
-            print("first write")
         else:
             csv_table.append(list(reader)[2:])
-            print("other writes")
 
     t = sum(csv_table,[])
 
