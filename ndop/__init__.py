@@ -138,7 +138,7 @@ def get_search_pars(
                 search_payload['rfPO'] = df[1][0]
             print("Region: ", reg_type, " - ", df[1][0])
         else:
-            print("More than one region was found :\n")
+            print(("{} regions was found :\n").format(len(df)-1))
             for i in df:
                 if i == df[0]:
                     print(i,"\n",50*"-")

@@ -131,11 +131,7 @@ def main():
 
     if type(search_parameters) is not dict:
         pass
-        # print(
-            # ("More than one region was found :\n {} "
-             # "\n\nSpecify the input value (name or code)"
-             # ).format(search_parameters)
-        # )
+
     else:
         get_ndop_data(
             args.user,
