@@ -26,17 +26,24 @@ def fail(message):
 
 def list_of_val(filt_attr, keyword):
     """
-    Get list of values
+    Get list of values from list searching on web
+    
+    :param filt_attr: use some attribute ie. `rfTaxon` or `multiple`
+    for search for regions names (CHKO, NP, EVL, cities)
+
     """
     
     s = requests.Session()
-    keyword = keyword
     url = ("https://portal.nature.cz/nd/nd_modals/"
            "modals.php?opener={}&promka={}").format(filt_attr, keyword)
     tax = s.get(url).text
     json_string = tax[9:-1]
     obj = json.loads(json_string)
-    dt = pd.DataFrame.from_dict(obj)
+        
+    dt = []
+    dt.append(list(obj[0].keys()))
+    for i in obj:
+        dt.append(list(i.values()))
     
     return(dt)
 
@@ -117,22 +124,28 @@ def get_search_pars(
 
     if region is not None:
         df = list_of_val('multiple', region)
-        if df.shape[0] == 1:
-            reg_type = df['type'][0]
+        if len(df) == 2:
+            reg_type = df[1][1]
             if reg_type == 'KU':
-                search_payload['rfKatastr'] = df['val'][0]
+                search_payload['rfKatastr'] = df[1][0]
             elif reg_type == 'MZCHU':
-                search_payload['rfMZCHU'] = df['val'][0]
+                search_payload['rfMZCHU'] = df[1][0]
             elif reg_type == 'EVL':
-                search_payload['rfEVL'] = df['val'][0]
+                search_payload['rfEVL'] = df[1][0]
             elif reg_type == 'VZCHU':
-                search_payload['rfVZCHU'] = df['val'][0]
+                search_payload['rfVZCHU'] = df[1][0]
             elif reg_type == 'PO':
-                search_payload['rfPO'] = df['val'][0]
-            print("Region: ", reg_type, " - ", df['val'][0])
+                search_payload['rfPO'] = df[1][0]
+            print("Region: ", reg_type, " - ", df[1][0])
         else:
-            return df.to_string()
-
+            print("More than one region was found :\n")
+            for i in df:
+                if i == df[0]:
+                    print(i,"\n",50*"-")
+                else:
+                    print(i)
+            print("\nSpecify the exact input value (name or code)")
+            return None
     return search_payload
 
 
