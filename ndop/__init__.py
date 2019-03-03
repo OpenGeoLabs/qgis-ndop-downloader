@@ -234,9 +234,16 @@ def get_ndop_data(username, password, search_payload, output_name):
     counter = 0
     print("Downloading records: ")
 
-    for i in range(0, num_rec, 500):
+    for i in range(1, num_rec, 500):
+        if i + 499 < num_rec:
+            to = i + 499
+        else:
+            to = num_rec
+        print("{} - {}".format(i, to))
+        if num_rec == i + 500:
+            print(num_rec)
+        
         counter+=1
-        print("{} - {}".format(str(i), str(i+500)))
         table_url = (
             'https://portal.nature.cz/nd/find.php?'
             'akce=seznam&opener=&vztazne_id=0&order=ID_ND_NALEZ'
