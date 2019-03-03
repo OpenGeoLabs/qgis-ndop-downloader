@@ -140,14 +140,14 @@ def get_search_pars(
                 search_payload['rfPO'] = df[1][0]
             print("Region: ", reg_type, " - ", df[1][0])
         else:
-            print(("{} regions was found :\n").format(len(df)-1))
             for i in df:
                 if i == df[0]:
                     print(i,"\n",50*"-")
                 else:
                     print(i)
-            print(("\nPlease specify the unique or exact input value"
-                  " ie: '{}'").format(df[1][0])
+            print(("\n{} regions was found \n"
+                  "Please specify the unique or exact input value "
+                  "i.e. '{}'").format(len(df)-1,df[1][0])
                  )
             return None
     return search_payload
