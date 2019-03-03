@@ -4,6 +4,8 @@ import configparser
 import re
 import urllib
 import json
+from io import StringIO
+import csv
 
 LOGIN_URL = 'https://login.nature.cz/login.php?appid=59'
 SEARCH_URL = ('https://portal.nature.cz/nd/find.php?akce=seznam&opener='
@@ -228,11 +230,12 @@ def get_ndop_data(username, password, search_payload, output_name):
         'ndtokenexport': ndtoken
     }
 
-    frames = []
-
+    csv_table = []
+    counter = 0
     print("Downloading records: ")
 
     for i in range(0, num_rec, 500):
+        counter+=1
         print("{} - {}".format(str(i), str(i+500)))
         table_url = (
             'https://portal.nature.cz/nd/find.php?'
@@ -243,12 +246,21 @@ def get_ndop_data(username, password, search_payload, output_name):
 
         req = s.post(url=table_url, data=table_payload)
         req.encoding = 'cp1250'
-        s_clean = pd.compat.StringIO(req.text)
-        df = pd.read_csv(s_clean, sep=";")
-        frames.append(df)
+        f = StringIO(req.text)
+        reader = csv.reader(f, delimiter=';')
+        if counter == 1: 
+            csv_table.append(list(reader)[1:])
+            print("first write")
+        else:
+            csv_table.append(list(reader)[2:])
+            print("other writes")
 
-    df = pd.concat(frames)
-    df.to_csv(output_name+"_csv.csv")
+    t = sum(csv_table,[])
+
+    with open(output_name+"_csv.csv", "w") as f:
+        writer = csv.writer(f)
+        writer.writerows(t)
+
     print("CSV table downloaded: {}_csv.csv".format(output_name))
 
     print("Localization downloading ...")
