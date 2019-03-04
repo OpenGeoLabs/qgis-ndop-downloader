@@ -70,6 +70,15 @@ def args_parser():
     parser.add_argument(
         '--author', help='author surname and firstname (i.e. "Kaláb Oto")'
     )
+    parser.add_argument(
+        '--project', help='for data obtained from specific project'
+    )
+    parser.add_argument(
+        '--source', help='general source of data (i.e. "ND - Databáze BioLog")'
+    )
+    parser.add_argument(
+        '--d_source', help='specific, more detailed source of data'
+    )
 
     parser.add_argument(
         '--config',
@@ -124,10 +133,12 @@ def main():
         polygon = poly(args.polygon)
     else:
         polygon = None
-    search_parameters = get_search_pars(args.author, args.taxon, args.region,
-                                        polygon, args.date_to,
-                                        args.date_from, args.month_to,
-                                        args.month_from)
+    search_parameters = get_search_pars(args.author, args.taxon,
+                                        args.region, polygon,
+                                        args.date_to, args.date_from,
+                                        args.month_to, args.month_from,
+                                        args.project, args.d_source, 
+                                        args.source)
 
     if type(search_parameters) is not dict:
         pass

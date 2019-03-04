@@ -59,7 +59,8 @@ def read_config(path):
 
 def get_search_pars(
         author='', taxon='', region=None, polygon=None, date_to='',
-        date_from='', month_to='', month_from=''):
+        date_from='', month_to='', month_from='', project=None,
+        source=None, d_source=None):
 
     """
     :param taxon: taxon
@@ -150,8 +151,32 @@ def get_search_pars(
                   "i.e. '{}'").format(len(df)-1,df[1][0])
                  )
             return None
-    return search_payload
+    
+    attr_dict = {
+        'rfProjekt':project,
+        'rfZdroj':d_source,
+        'rfMetadata':source
+        }
 
+    for key, value in attr_dict.items():
+        if value is not None:
+            df = list_of_val(key, value)
+            if len(df) == 2:
+                search_payload[key] = df[1][0]
+                print("Value: ", df[:2][1][0])
+            else:
+                for i in df:
+                    if i == df[0]:
+                        print(i,"\n",50*"-")
+                    else:
+                        print(i)
+                print(("\n{} values was found \n"
+                      "Please specify the unique or exact input value "
+                      "i.e. '{}'").format(len(df)-1,df[1][0])
+                     )
+                return None
+    
+    return search_payload
 
 def get_ndop_data(username, password, search_payload, output_name):
     """
