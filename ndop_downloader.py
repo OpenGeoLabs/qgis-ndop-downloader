@@ -204,13 +204,15 @@ class NDOPDownloader:
                 password = self.dlg.line_pass.text()
 
             taxon = self.dlg.line_taxon.text()
-            region = self.dlg.line_region.text()
-            if region == '':
-                region = None
+            # region = self.dlg.line_region.text()
+            # if region == '':
+                # region = None
 
 #           polygon=self.dlg.mMapLayerComboBox.currentLayer()
 
-            search_payload = ndop.get_search_pars(taxon=taxon,region=region)
+            search_payload = ndop.get_search_pars(taxon=taxon
+                                                # ,region=region
+                                                )
 
             data_path = Path(
                 os.path.dirname(os.path.realpath(__file__)),
