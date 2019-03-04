@@ -1,4 +1,3 @@
-import pandas as pd
 import requests
 import configparser
 import re
@@ -17,12 +16,12 @@ class NBException(Exception):
 
 def fail(message):
     """fail program for some reason. 
-
+    
     for most of the code, you should be using NBException
-
+    
     :param message: message to be printed to the user
     """
-
+    
     sys.stderr.write("ERROR: {}\n".format(message))
     sys.exit(1)
 
@@ -50,17 +49,17 @@ def list_of_val(filt_attr, keyword):
     return(dt)
 
 def read_config(path):
-	config = configparser.ConfigParser()
-	config.read(path)
-	username = config.get('login', 'username')
-	password = config.get('login', 'password')
-
-	return (username, password)
+    config = configparser.ConfigParser()
+    config.read(path)
+    username = config.get('login', 'username')
+    password = config.get('login', 'password')
+    
+    return (username, password)
 
 def get_search_pars(
         author='', taxon='', region=None, polygon=None, date_to='',
         date_from='', month_to='', month_from='', project=None,
-        source=None, d_source=None):
+        d_source=None, source=None):
 
     """
     :param taxon: taxon
@@ -162,7 +161,7 @@ def get_search_pars(
         if value is not None:
             df = list_of_val(key, value)
             if len(df) == 2:
-                search_payload[key] = df[1][0]
+                search_payload[key] = urllib.parse.quote_plus(df[1][0])
                 print("Value: ", df[:2][1][0])
             else:
                 for i in df:
@@ -175,7 +174,7 @@ def get_search_pars(
                       "i.e. '{}'").format(len(df)-1,df[1][0])
                      )
                 return None
-    
+
     return search_payload
 
 def get_ndop_data(username, password, search_payload, output_name):
@@ -198,7 +197,11 @@ def get_ndop_data(username, password, search_payload, output_name):
         raise NBException("Login failed")
 
     print("Filtering...")
-    filter_page = s.post(SEARCH_URL, data=search_payload)
+    # filter_page = s.post(SEARCH_URL, data=search_payload)
+
+    #prevent URL encoding to get strings like `BERAN+V.+%282009%29+` and not `BERAN%2BV.%2B%282009%29%2B`
+    payload_str = "&".join("%s=%s" % (k,v) for k,v in search_payload.items())
+    filter_page = s.post(SEARCH_URL, params=payload_str)
 
     if re.search("Seznam výsledků je prázdný", filter_page.text) is not None:
         print("No results found")
