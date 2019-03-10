@@ -1,4 +1,5 @@
 __pycache__
+.ndop.cfg
 dist
 build
 downloaded_data/data_*
