@@ -187,21 +187,31 @@ class NDOPDownloader:
     def run(self):
         """Run method that performs all the real work"""
         # show the dialog
+        plugin_path = Path(os.path.dirname(os.path.realpath(__file__)))
+        try:
+            username, password = ndop.read_config(Path(
+                                                  plugin_path,
+                                                 '.ndop.cfg'
+                                                )
+            )
+            self.dlg.line_user.setPlaceholderText(username)
+            self.dlg.line_pass.setPlaceholderText(10*u"\u25CF")
+        except:
+            print("Kongigurační soubor nenalezen")
         self.dlg.show()
         # Run the dialog event loop
         result = self.dlg.exec_()
         # See if OK was pressed
-        
         if result:
-            
-            if self.dlg.line_user.text() == '':
-                try:
-                    username, password = ndop.read_config(Path(Path.home(), ".ndop.cfg"))
-                except:
-                    print("Kongigurační soubor nenalezen") 
-            else:
+            if 'username' not in globals():
                 username = self.dlg.line_user.text()
                 password = self.dlg.line_pass.text()
+                if self.dlg.pass_check.isChecked():
+                    import configparser
+                    config = configparser.ConfigParser()
+                    config['login'] = {'username': username,'password': password}
+                    with open(Path(plugin_path,'.ndop.cfg'), 'w') as configfile:
+                        config.write(configfile)
 
             taxon = self.dlg.line_taxon.text()
             # region = self.dlg.line_region.text()
@@ -214,10 +224,7 @@ class NDOPDownloader:
                                                 # ,region=region
                                                 )
 
-            data_path = Path(
-                os.path.dirname(os.path.realpath(__file__)),
-                "downloaded_data"
-            )
+            data_path = Path(plugin_path,"downloaded_data")
 
             
             ndop.get_ndop_data(
