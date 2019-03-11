@@ -196,14 +196,21 @@ class NDOPDownloader:
             )
             self.dlg.line_user.setPlaceholderText(username)
             self.dlg.line_pass.setPlaceholderText(10*u"\u25CF")
+            self.dlg.pass_check.setEnabled(False)
         except:
-            print("Kongigurační soubor nenalezen")
+            pass
         self.dlg.show()
         # Run the dialog event loop
         result = self.dlg.exec_()
         # See if OK was pressed
         if result:
-            if 'username' not in globals():
+            try:
+                username, password = ndop.read_config(Path(
+                                                      plugin_path,
+                                                     '.ndop.cfg'
+                                                    )
+                )
+            except:
                 username = self.dlg.line_user.text()
                 password = self.dlg.line_pass.text()
                 if self.dlg.pass_check.isChecked():
@@ -233,7 +240,10 @@ class NDOPDownloader:
                 search_payload,
                 str(Path(data_path,"data"))
             )
-
+            
+            from qgis.core import Qgis
+            iface.messageBar().pushMessage("Info", "Tady bude někaé info, ", level=Qgis.Info)
+            
             for filename in os.listdir(data_path):
                 if filename.endswith("zip"):
                     layer = iface.addVectorLayer(str(Path(data_path,filename)), "", "ogr")
