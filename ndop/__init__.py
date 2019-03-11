@@ -177,7 +177,7 @@ def get_search_pars(
 
     return search_payload
 
-def get_ndop_data(username, password, search_payload, output_name):
+def login(username, password):
     """
     Login and download data based on search payload dict
     """
@@ -196,8 +196,11 @@ def get_ndop_data(username, password, search_payload, output_name):
     if not "isop_loginhash" in s.cookies:
         raise NBException("Login failed")
 
+    return s
+
+def search_filter(s,search_payload):
     print("Filtering...")
-    # filter_page = s.post(SEARCH_URL, data=search_payload)
+# filter_page = s.post(SEARCH_URL, data=search_payload)
 
     #prevent URL encoding to get strings like `BERAN+V.+%282009%29+` and not `BERAN%2BV.%2B%282009%29%2B`
     payload_str = "&".join("%s=%s" % (k,v) for k,v in search_payload.items())
@@ -258,6 +261,9 @@ def get_ndop_data(username, password, search_payload, output_name):
         'ndtokenexport': ndtoken
     }
 
+    return(table_payload,num_rec)
+
+def get_ndop_csv_data(s,num_rec,table_payload,output_name):
     csv_table = []
     counter = 0
     print("Downloading records: ")
@@ -277,7 +283,7 @@ def get_ndop_data(username, password, search_payload, output_name):
             'akce=seznam&opener=&vztazne_id=0&order=ID_ND_NALEZ'
             '&orderhow=DESC&frompage={frompage}&pagesize=500&'
             'filtering=&searching=&export=1&ndtoken={ndtoken}'
-        ).format(frompage=str(i), ndtoken=ndtoken)
+        ).format(frompage=str(i), ndtoken=table_payload['ndtokenexport'])
 
         req = s.post(url=table_url, data=table_payload)
         req.encoding = 'cp1250'
@@ -295,7 +301,9 @@ def get_ndop_data(username, password, search_payload, output_name):
         writer.writerows(t)
 
     print("CSV table downloaded: {}_csv.csv".format(output_name))
+    return t
 
+def get_ndop_shp_data(s,output_name):
     print("Localization downloading ...")
     local = s.get(LOCATIONS_URL).text
     if local == '\n\n\n\n\n\n':
@@ -311,3 +319,9 @@ def get_ndop_data(username, password, search_payload, output_name):
             urllib.request.urlretrieve(i, filename)
             print("SHP downloaded: " + filename)
     print("Done")
+
+def get_ndop_data(username, password, search_payload, output_name):
+    s = login(username, password)
+    table_payload, num_rec = search_filter(s,search_payload)
+    get_ndop_csv_data(s,num_rec,table_payload,output_name)
+    get_ndop_shp_data(s,output_name)

@@ -150,6 +150,10 @@ def main():
             search_parameters,
             args.output
         )
+        # s = login(args.user, args.password)
+        # table_payload, num_rec = search_filter(s,search_parameters)
+        # get_ndop_csv_data(s,num_rec,table_payload,args.output)
+        # get_ndop_shp_data(s,args.output)
 
 if __name__ == "__main__":
 
