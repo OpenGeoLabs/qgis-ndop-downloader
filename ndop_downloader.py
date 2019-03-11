@@ -263,7 +263,7 @@ class NDOPDownloader:
             iface.messageBar().pushMessage("Stahování", "Stahování tabulek - počet výsledků: "
                                             + str(num_rec)
                                             + " (odhadovaná doba: "
-                                            + str(int(num_rec/500)+(num_rec % 500 > 0))
+                                            + str((int(num_rec/500)+(num_rec % 500 > 0))*30/60.0)
                                             + " minuty)"
                                             , level=Qgis.Info, duration = 0
                                             )
@@ -271,6 +271,8 @@ class NDOPDownloader:
                 ndop.get_ndop_csv_data(s,num_rec,table_payload,str(Path(data_path,"data")))
             except:
                 iface.messageBar().pushMessage("Hups", "Stahování selhalo", level=Qgis.Critical)
+            iface.messageBar().clearWidgets()
+            iface.messageBar().pushMessage("Hotovo", "Data stažena", level=Qgis.Success)
 
             for filename in os.listdir(data_path):
                 if filename.endswith("zip"):
@@ -289,5 +291,5 @@ class NDOPDownloader:
                     layer = iface.addVectorLayer(
                         uri, "centroids_"+filename, "delimitedtext"
                     )
-        iface.messageBar().clearWidgets()
-        iface.messageBar().pushMessage("Hotovo", "Data stažena", level=Qgis.Success)
+        
+        
