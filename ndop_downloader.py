@@ -235,15 +235,14 @@ class NDOPDownloader:
 
             data_path = Path(plugin_path,"downloaded_data")
 
-#todo
-            iface.messageBar().pushMessage("Přihlašování", "Přihlašování.. Strpení ", level=Qgis.Info, duration = 0)
+            iface.messageBar().pushMessage("Přihlašování", "", level=Qgis.Info, duration = 0)
             try:
                 s = ndop.login(username, password)
             except:
                 iface.messageBar().clearWidgets()
                 iface.messageBar().pushMessage("Hups!", "Přihlášení selhalo ", level=Qgis.Critical)
             
-            iface.messageBar().pushMessage("Filtrování výsledků", "Hledám údaje...", level=Qgis.Info, duration = 0)
+            iface.messageBar().pushMessage("Filtrování výsledků", "Dotazování databáze (odhadovaná doba: 1 minuta)", level=Qgis.Info, duration = 0)
             try:
                 table_payload, num_rec = ndop.search_filter(s,search_payload)
                 iface.messageBar().clearWidgets()
@@ -253,14 +252,20 @@ class NDOPDownloader:
                 iface.messageBar().pushMessage("Hups", "Filtrování selhalo", level=Qgis.Critical)
             
             iface.messageBar().clearWidgets()
-            iface.messageBar().pushMessage("Stahování", "Stahování lokalizací - počet výsledků: "+str(num_rec), level=Qgis.Info, duration = 0)
+            iface.messageBar().pushMessage("Stahování", "Stahování lokalizací - počet výsledků: "+str(num_rec)+" (odhadovaná doba: 1,5 minuty)", level=Qgis.Info, duration = 0)
             try:
                 ndop.get_ndop_shp_data(s,str(Path(data_path,"data")))
             except:
                 iface.messageBar().pushMessage("Hups", "Stahování selhalo", level=Qgis.Critical)
 
             iface.messageBar().clearWidgets()
-            iface.messageBar().pushMessage("Stahování", "Stahování tabulek - počet výsledků: "+str(num_rec), level=Qgis.Info, duration = 0)
+            iface.messageBar().pushMessage("Stahování", "Stahování tabulek - počet výsledků: "
+                                            + str(num_rec)
+                                            + " (odhadovaná doba: "
+                                            + int(num_rec/500)+(num_rec % 500 > 0)
+                                            + " minuty)"
+                                            , level=Qgis.Info, duration = 0
+                                            )
             try:
                 ndop.get_ndop_csv_data(s,num_rec,table_payload,str(Path(data_path,"data")))
             except:
