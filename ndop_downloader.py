@@ -236,6 +236,7 @@ class NDOPDownloader:
             data_path = Path(plugin_path,"downloaded_data")
 
             iface.messageBar().pushMessage("Přihlašování", "", level=Qgis.Info, duration = 0)
+            
             try:
                 s = ndop.login(username, password)
             except:
@@ -262,7 +263,7 @@ class NDOPDownloader:
             iface.messageBar().pushMessage("Stahování", "Stahování tabulek - počet výsledků: "
                                             + str(num_rec)
                                             + " (odhadovaná doba: "
-                                            + int(num_rec/500)+(num_rec % 500 > 0)
+                                            + str(int(num_rec/500)+(num_rec % 500 > 0))
                                             + " minuty)"
                                             , level=Qgis.Info, duration = 0
                                             )
