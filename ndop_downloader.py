@@ -236,36 +236,35 @@ class NDOPDownloader:
             data_path = Path(plugin_path,"downloaded_data")
 
 #todo
+            iface.messageBar().pushMessage("Přihlašování", "Přihlašování.. Strpení ", level=Qgis.Info, duration = 0)
             try:
-                iface.messageBar().pushMessage("Info", "Přihlašování.. Strpení ", level=Qgis.Info, duration = 0)
                 s = ndop.login(username, password)
-
             except:
-                iface.messageBar().pushMessage("Hups", "Přihlášení selhalo ", level=Qgis.Critical)
+                iface.messageBar().clearWidgets()
+                iface.messageBar().pushMessage("Hups!", "Přihlášení selhalo ", level=Qgis.Critical)
             
+            iface.messageBar().pushMessage("Filtrování výsledků", "Hledám údaje...", level=Qgis.Info, duration = 0)
             try:
-                iface.messageBar().pushMessage("Info", "Filtrování výsledků", level=Qgis.Info, duration = 0)
                 table_payload, num_rec = ndop.search_filter(s,search_payload)
                 iface.messageBar().clearWidgets()
-                iface.messageBar().pushMessage("Info", "Počet výsledků "+num_rec, level=Qgis.Info)
-
+                iface.messageBar().pushMessage("Filtrování výsledků", "počet výsledků: "+str(num_rec), level=Qgis.Info, duration = 0)
             except:
+                iface.messageBar().clearWidgets()
                 iface.messageBar().pushMessage("Hups", "Filtrování selhalo", level=Qgis.Critical)
-
+            
+            iface.messageBar().clearWidgets()
+            iface.messageBar().pushMessage("Stahování", "Stahování lokalizací - počet výsledků: "+str(num_rec), level=Qgis.Info, duration = 0)
             try:
-                iface.messageBar().pushMessage("Stahování", "Stahování lokalizací - počet výsledků: "+num_rec, level=Qgis.Info, duration = 0)
                 ndop.get_ndop_shp_data(s,str(Path(data_path,"data")))
-
             except:
                 iface.messageBar().pushMessage("Hups", "Stahování selhalo", level=Qgis.Critical)
 
+            iface.messageBar().clearWidgets()
+            iface.messageBar().pushMessage("Stahování", "Stahování tabulek - počet výsledků: "+str(num_rec), level=Qgis.Info, duration = 0)
             try:
-                iface.messageBar().clearWidgets()
-                iface.messageBar().pushMessage("Stahování", "Stahování tabulek - počet výsledků: "+num_rec, level=Qgis.Info, duration = 0)
                 ndop.get_ndop_csv_data(s,num_rec,table_payload,str(Path(data_path,"data")))
             except:
                 iface.messageBar().pushMessage("Hups", "Stahování selhalo", level=Qgis.Critical)
-            iface.messageBar().clearWidgets()
 
             for filename in os.listdir(data_path):
                 if filename.endswith("zip"):
