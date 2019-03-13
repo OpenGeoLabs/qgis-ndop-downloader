@@ -283,9 +283,9 @@ class NDOPDownloader:
             try:
                 s = ndop.login(username, password)
             except:
-                return mess_bar("Hups!", "Přihlášení selhalo ", level=Qgis.Critical)
+                return mess_bar("Hups", "Přihlášení selhalo ", level=Qgis.Critical)
 
-            mess_bar("Filtrování výsledků", "Dotazování databáze (odhadovaná doba: 1 minuta)", level=Qgis.Info, duration = 0)
+            mess_bar("Filtrování", "Dotazování databáze (odhadovaná doba: 1 minuta)", level=Qgis.Info, duration = 0)
             # mess_bar_butt("Stahování", "Dotazování databáze (odhadovaná doba: 1 minuta)", Qgis.Info, 0)
             
             try:
@@ -297,7 +297,7 @@ class NDOPDownloader:
             def showError():
                 return mess_bar("Konec", "Akce zrušena", level=Qgis.Warning)
 
-            mess_bar("Stahování", "Stahování lokalizací - počet výsledků: "+str(num_rec)+" (odhadovaná doba: 1 minuta)", Qgis.Info, 0)
+            mess_bar("Stahování", "Stahování lokalizací - počet záznamů: "+str(num_rec)+" (odhadovaná doba: 1 minuta)", Qgis.Info, 0)
             # mess_bar_butt("Stahování", "Stahování lokalizací - počet výsledků: "+str(num_rec)+" (odhadovaná doba: 1 minuta)", Qgis.Info, 0)
             
             try:
@@ -305,7 +305,7 @@ class NDOPDownloader:
             except:
                 return mess_bar("Hups", "Stahování selhalo", level=Qgis.Critical)
 
-            mess_bar("Stahování", "Stahování tabulek - počet výsledků: "
+            mess_bar("Stahování", "Stahování tabulek - počet záznamů: "
                     + str(num_rec)
                     + " (odhadovaná doba: "
                     + str((int(num_rec/500)+(num_rec % 500 > 0))*30/60.0)
