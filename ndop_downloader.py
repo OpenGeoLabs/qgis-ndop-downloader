@@ -266,19 +266,18 @@ class NDOPDownloader:
                 # iface.messageBar().pushWidget(widget, level, duration)
                 # self.iface.mainWindow().repaint()
 
-            #prvni pushMessage se nezobrazí
             mess_bar("Testování dotazu", "Hledám zadané parametry v číselnících", level=Qgis.Info, duration = 0)
 
             ls_t = get_list("rfTaxon")
+            
             if taxon != "":
-                if taxon not in ls_t:
+                if taxon.lower() not in ls_t.lower():
                     return mess_bar("Taxon nenalezen!"
                                     , "Zadejte prosím přesný název taxonu"
                                     ,Qgis.Warning
                                     ,5
                     )
-                
-            
+
             mess_bar("Přihlašování", "Přihlášení do systému ISOP", level=Qgis.Info, duration = 0)
       
             try:
