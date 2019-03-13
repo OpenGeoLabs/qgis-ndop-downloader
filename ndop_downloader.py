@@ -238,14 +238,17 @@ class NDOPDownloader:
             #prvni pushMessage se nezobrazí
             iface.messageBar().pushMessage("Přihlašování", "Přihlášení do systému ISOP", level=Qgis.Info, duration = 0)
             iface.messageBar().pushMessage("Přihlašování", "Přihlášení do systému ISOP", level=Qgis.Info, duration = 0)
+            self.iface.mainWindow().repaint()
 
             try:
                 s = ndop.login(username, password)
             except:
                 iface.messageBar().clearWidgets()
                 return iface.messageBar().pushMessage("Hups!", "Přihlášení selhalo ", level=Qgis.Critical)
+
             iface.messageBar().clearWidgets()
             iface.messageBar().pushMessage("Filtrování výsledků", "Dotazování databáze (odhadovaná doba: 1 minuta)", level=Qgis.Info, duration = 0)
+            self.iface.mainWindow().repaint()
             
             try:
                 table_payload, num_rec = ndop.search_filter(s,search_payload)
@@ -255,7 +258,8 @@ class NDOPDownloader:
 
             iface.messageBar().clearWidgets()
             iface.messageBar().pushMessage("Stahování", "Stahování lokalizací - počet výsledků: "+str(num_rec)+" (odhadovaná doba: 1 minuta)", level=Qgis.Info, duration = 0)
-
+            self.iface.mainWindow().repaint()
+            
             try:
                 ndop.get_ndop_shp_data(s,str(Path(data_path,"data")))
             except:
@@ -269,6 +273,8 @@ class NDOPDownloader:
                                             + " minuty)"
                                             , level=Qgis.Info, duration = 0
                                             )
+            self.iface.mainWindow().repaint()
+
             try:
                 ndop.get_ndop_csv_data(s,num_rec,table_payload,str(Path(data_path,"data")))
             except:
