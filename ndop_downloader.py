@@ -273,7 +273,7 @@ class NDOPDownloader:
             if taxon != "":
                 if taxon.lower() not in ls_t.lower():
                     return mess_bar("Taxon nenalezen!"
-                                    , "Zadejte prosím přesný název taxonu"
+                                    , "Neplatný název taxonu. Zadejte prosím přesný název"
                                     ,Qgis.Warning
                                     ,5
                     )
@@ -292,7 +292,7 @@ class NDOPDownloader:
                 table_payload, num_rec = ndop.search_filter(s,search_payload)
 
             except:
-                return iface.messageBar().pushMessage("Hups", "Filtrování selhalo", level=Qgis.Critical)
+                return mess_bar("Hups", "Filtrování selhalo", level=Qgis.Critical)
 
             def showError():
                 return mess_bar("Konec", "Akce zrušena", level=Qgis.Warning)
