@@ -34,6 +34,8 @@ from pathlib import Path
 from qgis.utils import iface
 from . import ndop
 from qgis.core import Qgis
+# from PyQt5.QtWidgets import QApplication, QWidget, QPushButton
+import requests
 
 class NDOPDownloader:
     """QGIS Plugin Implementation."""
@@ -235,6 +237,15 @@ class NDOPDownloader:
 
             data_path = Path(plugin_path,"downloaded_data")
 
+            def get_list(filt_par):
+                    s = requests.Session()
+                    url = ("https://portal.nature.cz/nd/nd_modals/"
+                           "modals.php?opener={}&promka=").format(filt_par)
+                    ls = s.get(url).text
+                    return ls
+                    
+
+            
             def mess_bar (head,desc,level,duration):
                 iface.messageBar().clearWidgets()
                 iface.messageBar().pushMessage(head, desc, level, duration)
@@ -254,9 +265,20 @@ class NDOPDownloader:
                 # widget.layout().addWidget(button)
                 # iface.messageBar().pushWidget(widget, level, duration)
                 # self.iface.mainWindow().repaint()
-            
+
             #prvni pushMessage se nezobrazí
-            mess_bar("Přihlašování", "Přihlášení do systému ISOP", level=Qgis.Info, duration = 0)
+            mess_bar("Testování dotazu", "Hledám zadané parametry v číselnících", level=Qgis.Info, duration = 0)
+
+            ls_t = get_list("rfTaxon")
+            if taxon != "":
+                if taxon not in ls_t:
+                    return mess_bar("Taxon nenalezen!"
+                                    , "Zadejte prosím přesný název taxonu"
+                                    ,Qgis.Warning
+                                    ,5
+                    )
+                
+            
             mess_bar("Přihlašování", "Přihlášení do systému ISOP", level=Qgis.Info, duration = 0)
       
             try:
@@ -265,7 +287,7 @@ class NDOPDownloader:
                 return iface.messageBar().pushMessage("Hups!", "Přihlášení selhalo ", level=Qgis.Critical)
 
             mess_bar("Filtrování výsledků", "Dotazování databáze (odhadovaná doba: 1 minuta)", level=Qgis.Info, duration = 0)
-            # mess_bar_butt("Stahování", "Dotazování databáze (odhadovaná doba: 1 minuta))", Qgis.Info, 0)
+            # mess_bar_butt("Stahování", "Dotazování databáze (odhadovaná doba: 1 minuta)", Qgis.Info, 0)
             
             try:
                 table_payload, num_rec = ndop.search_filter(s,search_payload)
