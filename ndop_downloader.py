@@ -246,7 +246,7 @@ class NDOPDownloader:
                     
 
             
-            def mess_bar (head,desc,level,duration):
+            def mess_bar (head,desc,level,duration=5):
                 iface.messageBar().clearWidgets()
                 iface.messageBar().pushMessage(head, desc, level, duration)
                 self.iface.mainWindow().repaint()
@@ -283,7 +283,7 @@ class NDOPDownloader:
             try:
                 s = ndop.login(username, password)
             except:
-                return iface.messageBar().pushMessage("Hups!", "Přihlášení selhalo ", level=Qgis.Critical)
+                return mess_bar("Hups!", "Přihlášení selhalo ", level=Qgis.Critical)
 
             mess_bar("Filtrování výsledků", "Dotazování databáze (odhadovaná doba: 1 minuta)", level=Qgis.Info, duration = 0)
             # mess_bar_butt("Stahování", "Dotazování databáze (odhadovaná doba: 1 minuta)", Qgis.Info, 0)
@@ -295,8 +295,7 @@ class NDOPDownloader:
                 return iface.messageBar().pushMessage("Hups", "Filtrování selhalo", level=Qgis.Critical)
 
             def showError():
-                iface.messageBar().clearWidgets()
-                return iface.messageBar().pushMessage("Konec", "Akce zrušena", level=Qgis.Warning)
+                return mess_bar("Konec", "Akce zrušena", level=Qgis.Warning)
 
             mess_bar("Stahování", "Stahování lokalizací - počet výsledků: "+str(num_rec)+" (odhadovaná doba: 1 minuta)", Qgis.Info, 0)
             # mess_bar_butt("Stahování", "Stahování lokalizací - počet výsledků: "+str(num_rec)+" (odhadovaná doba: 1 minuta)", Qgis.Info, 0)
@@ -304,8 +303,7 @@ class NDOPDownloader:
             try:
                 ndop.get_ndop_shp_data(s,str(Path(data_path,"data")))
             except:
-                iface.messageBar().clearWidgets()
-                return iface.messageBar().pushMessage("Hups", "Stahování selhalo", level=Qgis.Critical)
+                return mess_bar("Hups", "Stahování selhalo", level=Qgis.Critical)
 
             mess_bar("Stahování", "Stahování tabulek - počet výsledků: "
                     + str(num_rec)
@@ -318,8 +316,7 @@ class NDOPDownloader:
             try:
                 ndop.get_ndop_csv_data(s,num_rec,table_payload,str(Path(data_path,"data")))
             except:
-                iface.messageBar().clearWidgets()
-                return iface.messageBar().pushMessage("Hups", "Stahování selhalo", level=Qgis.Critical)
+                return mess_bar("Hups", "Stahování selhalo", level=Qgis.Critical)
 
             for filename in os.listdir(data_path):
                 if filename.endswith("zip"):
