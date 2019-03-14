@@ -22,10 +22,11 @@ Zásuvný modul slouží ke stahování dat z nálezové databáze AOPK. V
 současné verzi je možné filtrovat na základě taxonu (druh. rod)
 a regionu (katastrální území, CHKO, PP, atd.).
 
-Výstupem jsou dostupná data lokalizací (.shp) a tabulková data (.csv)
-pro všechny záznamy. Lokalizace se po ukončení stahování nahrají do projektu.
-Tabulková data se nahrají do projektu jako `Oddělený text` a na základě
-souřadnic z tabulky se zobrazí jako bodová vrstva.
+Výstupem jsou dostupná data lokalizací (.shp komprimované v .zip)
+a tabulková data (.csv) pro všechny záznamy. Lokalizace se po ukončení
+stahování nahrají do projektu. Tabulková data se nahrají do projektu
+jako `Oddělený text` a na základě souřadnic z tabulky se zobrazí jako
+bodová vrstva. Tato data obsahují body a centroidy polygonů a linií.
 
     obr
 
