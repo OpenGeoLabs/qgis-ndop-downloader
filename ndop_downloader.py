@@ -374,10 +374,11 @@ class NDOPDownloader:
                     , level=Qgis.Info, duration = 0
             )
 
-            try:
-                ndop.get_ndop_csv_data(s,num_rec,table_payload,str(Path(data_path,file_names)))
-            except:
-                return mess_bar("Hups", "Stahování selhalo", level=Qgis.Critical)
+            if self.dlg.csv_check.isChecked() == False:
+                try:
+                    ndop.get_ndop_csv_data(s,num_rec,table_payload,str(Path(data_path,file_names)))
+                except:
+                    return mess_bar("Hups", "Stahování selhalo", level=Qgis.Critical)
 
             for filename in os.listdir(data_path):
                 if filename.endswith("zip") and filename.startswith(file_names):

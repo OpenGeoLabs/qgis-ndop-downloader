@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>385</width>
-    <height>506</height>
+    <height>532</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>460</y>
+     <y>480</y>
      <width>341</width>
      <height>40</height>
     </rect>
@@ -236,6 +236,28 @@
    </property>
    <property name="text">
     <string>Výstupní složka</string>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="csv_check">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>450</y>
+     <width>211</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="whatsThis">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+   <property name="text">
+    <string>Nestahovat tabulková data</string>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
    </property>
   </widget>
  </widget>
