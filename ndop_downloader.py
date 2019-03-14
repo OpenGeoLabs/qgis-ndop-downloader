@@ -204,7 +204,7 @@ class NDOPDownloader:
             pass
 
         self.dlg.mQgsFileWidget.setStorageMode(1)
-        mQgsFileWidget_def = "Uložit do dočasných soubory"
+        mQgsFileWidget_def = "Uložit do dočasných souborů"
         self.dlg.mQgsFileWidget.setFilePath(mQgsFileWidget_def)
         
         self.dlg.show()
