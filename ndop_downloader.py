@@ -228,7 +228,7 @@ class NDOPDownloader:
         
         num_reg = get_numberer("multiple")
         self.dlg.combo_region.completer().setCompletionMode(0)
-        self.dlg.combo_region.addItems([""]+[d['col1'] for d in num_reg])
+        self.dlg.combo_region.addItems([""]+[d['col1']+' - '+ d['type'] for d in num_reg])
 
         self.dlg.mQgsFileWidget.setStorageMode(1)
         mQgsFileWidget_def = "Uložit do dočasných souborů"
@@ -271,7 +271,7 @@ class NDOPDownloader:
                 # plugintak jak má kvůli konkrétnímu výběru v comboboxu.
                 # Funkce se tam musí doladit.
                 for i in num_reg:
-                    if i['col1'] == region:
+                    if i['col1'] == startswith(region):
                         region = i
                         reg_type = i['type']
                         if reg_type == 'KU':
