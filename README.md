@@ -21,6 +21,7 @@ QGIS Plugin - NDOP Downloader
 -----------------------------
 Instalace
 *********
+
 Zásuvný modul předpokládá verzi LTR QGIS 3.4. Instaluje se jako ostatní
 moduly pomocí menu `Zásuvné moduly --> Spravovat a instalovat zásuvné moduly`.
 Je ale nutné přidat externí repozitář OpneGeoLabs. V záložce nastavení klikneme
@@ -42,6 +43,7 @@ a pro rychlé spuštění se objeví ikonka v liště.
 
 Popis
 *****
+
 Zásuvný modul umí v současné verzi filtrovat na základě taxonu (druh. rod)
 a regionu (katastrální území, CHKO, PP, atd.).
 
@@ -56,6 +58,7 @@ souřadnic z tabulky se zobrazí jako bodová vrstva.
 
 Přihlášení
 ..........
+
 Zadejte přihlašovací údaje pro informačním systém AOPK (ISOP). Pokud
 zaškrtnete položku `Uložit přihlašovací údaje`, údaje se uloží do
 konfiguračního souboru a při dalším použití budou předvyplněna
@@ -64,6 +67,7 @@ konfiguračního souboru a při dalším použití budou předvyplněna
 
 Taxon
 .....
+
 Druh lze vybrat pomocí rolovací nabídky, nebo vepsáním názvu s funkcí
 našeptávače. Lze zadávat česká i latinská jména.
 
@@ -71,6 +75,7 @@ našeptávače. Lze zadávat česká i latinská jména.
 
 Region
 ......
+
 Obdobně jako u taxonu. V případě že položka zůstane nevyplněná, získáme
 data z clého území ČR. Naopak, pokud vybyreme území regionu a necháme
 prázdné políčko taxonu, získáme data všech taxonů ve vybraném regionu.
@@ -79,12 +84,14 @@ prázdné políčko taxonu, získáme data všech taxonů ve vybraném regionu.
 
 Výstupní složka
 ...............
+
 Vybereme výsupní složku kam se nám data uloží. Pokud ponecháme prázdné,
 stáhnou se data do složky dočasných souborů. V případě, že nechcete
 stahovat tabulková data zaškrtněte možnost `Nestahovat tabulková data`.
 
 Spuštění a průběh
 *****************
+
 Po potvrzení tlačítkem `Ok` se okno zavře a spustí se filtrace a
 stahování. QGIS během stahování **nelze používat**. Stejně jako při
 použití oficiální webové aplikace, stahování může trvat několik minut v
