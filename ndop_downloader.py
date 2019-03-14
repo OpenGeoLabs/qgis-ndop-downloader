@@ -36,7 +36,7 @@ from . import ndop
 from qgis.core import Qgis
 # from PyQt5.QtWidgets import QApplication, QWidget, QPushButton
 import requests
-
+import tempfile
 class NDOPDownloader:
     """QGIS Plugin Implementation."""
 
@@ -202,6 +202,11 @@ class NDOPDownloader:
 
         except:
             pass
+
+        self.dlg.mQgsFileWidget.setStorageMode(1)
+        mQgsFileWidget_def = "Uložit do dočasných soubory"
+        self.dlg.mQgsFileWidget.setFilePath(mQgsFileWidget_def)
+        
         self.dlg.show()
         # Run the dialog event loop
         result = self.dlg.exec_()
@@ -234,8 +239,13 @@ class NDOPDownloader:
             search_payload = ndop.get_search_pars(taxon=taxon
                                                 # ,region=region
                                                 )
+            
+            if self.dlg.mQgsFileWidget.filePath () == mQgsFileWidget_def:
+                self.dlg.mQgsFileWidget.setFilePath(tempfile.gettempdir())
 
-            data_path = Path(plugin_path,"downloaded_data")
+            data_path = self.dlg.mQgsFileWidget.filePath()
+
+            # data_path = Path(plugin_path,"downloaded_data")
 
             def get_list(filt_par):
                     s = requests.Session()
@@ -245,7 +255,7 @@ class NDOPDownloader:
                     return ls
                     
 
-            
+
             def mess_bar (head,desc,level,duration=5):
                 iface.messageBar().clearWidgets()
                 iface.messageBar().pushMessage(head, desc, level, duration)
@@ -299,9 +309,10 @@ class NDOPDownloader:
 
             mess_bar("Stahování", "Stahování lokalizací - počet záznamů: "+str(num_rec)+" (odhadovaná doba: 1 minuta)", Qgis.Info, 0)
             # mess_bar_butt("Stahování", "Stahování lokalizací - počet výsledků: "+str(num_rec)+" (odhadovaná doba: 1 minuta)", Qgis.Info, 0)
-            
+
+            file_names = taxon.replace(" ", "_") 
             try:
-                ndop.get_ndop_shp_data(s,str(Path(data_path,"data")))
+                ndop.get_ndop_shp_data(s,str(Path(data_path,file_names)))
             except:
                 return mess_bar("Hups", "Stahování selhalo", level=Qgis.Critical)
 
@@ -314,7 +325,7 @@ class NDOPDownloader:
             )
 
             try:
-                ndop.get_ndop_csv_data(s,num_rec,table_payload,str(Path(data_path,"data")))
+                ndop.get_ndop_csv_data(s,num_rec,table_payload,str(Path(data_path,file_names)))
             except:
                 return mess_bar("Hups", "Stahování selhalo", level=Qgis.Critical)
 
@@ -336,4 +347,4 @@ class NDOPDownloader:
                         uri, "centroids_"+filename, "delimitedtext"
                     )
 
-            mess_bar("Hotovo", "Data stažena", level=Qgis.Success, duration = 10)
+            mess_bar("Hotovo", "Data stažena do složky: <a href='file://{0}'>{0}/</a>".format(data_path), level=Qgis.Success, duration = 10)
