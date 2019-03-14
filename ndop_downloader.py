@@ -40,6 +40,7 @@ from qgis.core import Qgis
 # from PyQt5.QtWidgets import QPushButton
 import requests
 import tempfile
+import csv
 
 class NDOPDownloader:
     """QGIS Plugin Implementation."""
@@ -208,15 +209,22 @@ class NDOPDownloader:
         #stažení číselníku - dá se úplně bokem a vytvoří se soubor s číselníky
         import json
 
-        def get_numberer(filt_par):
-            s = requests.Session()
-            url = ("https://portal.nature.cz/nd/nd_modals/"
-                   "modals.php?opener={}&promka=").format(filt_par)
-            ls = s.get(url).text
-            json_string = ls[9:-1]
-            num_dict = json.loads(json_string)
+        # def get_numberer(filt_par):
+            # s = requests.Session()
+            # url = ("https://portal.nature.cz/nd/nd_modals/"
+                   # "modals.php?opener={}&promka=").format(filt_par)
+            # ls = s.get(url).text
+            # json_string = ls[9:-1]
+            # num_dict = json.loads(json_string)
             
-            return num_dict
+            # return num_dict
+
+        def get_numberer(filt_par):
+            with open(Path(plugin_path,'cdb',filt_par+'.csv')) as f:
+                reader = csv.DictReader(f)
+                num_dict = list(reader)    
+
+                return num_dict
 
         # num_t = ["abcde","cdeef","1524654 abcd"]
 
