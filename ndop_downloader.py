@@ -22,8 +22,10 @@
  ***************************************************************************/
 """
 from PyQt5.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
-from PyQt5.QtGui import QIcon
-from PyQt5.QtWidgets import QAction
+# from PyQt5.QtGui import QIcon
+from PyQt5.QtGui import *
+# from PyQt5.QtWidgets import QAction, QWidget, QApplication, QCompleter, QComboBox
+from PyQt5.QtWidgets import *
 
 # Initialize Qt resources from file resources.py
 from .resources import *
@@ -34,7 +36,8 @@ from pathlib import Path
 from qgis.utils import iface
 from . import ndop
 from qgis.core import Qgis
-# from PyQt5.QtWidgets import QApplication, QWidget, QPushButton
+
+# from PyQt5.QtWidgets import QPushButton
 import requests
 import tempfile
 class NDOPDownloader:
@@ -189,7 +192,6 @@ class NDOPDownloader:
 
     def run(self):
         """Run method that performs all the real work"""
-        # show the dialog
         plugin_path = Path(os.path.dirname(os.path.realpath(__file__)))
         try:
             username, password = ndop.read_config(Path(
@@ -199,19 +201,35 @@ class NDOPDownloader:
             )
             self.dlg.line_user.setPlaceholderText(username)
             self.dlg.line_pass.setPlaceholderText(10*u"\u25CF")
-
         except:
             pass
+
+        #stažení číselníku - dá se úplně bokem a vytvoří se soubor s číselníky
+        import json
+
+        def get_list(filt_par):
+            s = requests.Session()
+            url = ("https://portal.nature.cz/nd/nd_modals/"
+                   "modals.php?opener={}&promka=").format(filt_par)
+            ls = s.get(url).text
+            return ls
+                    
+        ls_t = get_list("rfTaxon")
+        json_string = ls_t[9:-1]
+        dict_t = json.loads(json_string)
+
+        self.dlg.combo_taxon.addItems([""]+[d['val'] for d in dict_t])
 
         self.dlg.mQgsFileWidget.setStorageMode(1)
         mQgsFileWidget_def = "Uložit do dočasných souborů"
         self.dlg.mQgsFileWidget.setFilePath(mQgsFileWidget_def)
         
+        # show the dialog
         self.dlg.show()
         # Run the dialog event loop
         result = self.dlg.exec_()
         # See if OK was pressed
-#todo:
+
         if result:
             try:
                 username, password = ndop.read_config(Path(
@@ -229,7 +247,7 @@ class NDOPDownloader:
                     with open(Path(plugin_path,'.ndop.cfg'), 'w') as configfile:
                         config.write(configfile)
 
-            taxon = self.dlg.line_taxon.text()
+            taxon = self.dlg.combo_taxon.currentText()
             # region = self.dlg.line_region.text()
             # if region == '':
                 # region = None
@@ -247,13 +265,6 @@ class NDOPDownloader:
 
             # data_path = Path(plugin_path,"downloaded_data")
 
-            def get_list(filt_par):
-                    s = requests.Session()
-                    url = ("https://portal.nature.cz/nd/nd_modals/"
-                           "modals.php?opener={}&promka=").format(filt_par)
-                    ls = s.get(url).text
-                    return ls
-                    
 
 
             def mess_bar (head,desc,level,duration=5):
@@ -276,17 +287,15 @@ class NDOPDownloader:
                 # iface.messageBar().pushWidget(widget, level, duration)
                 # self.iface.mainWindow().repaint()
 
-            mess_bar("Testování dotazu", "Hledám zadané parametry v číselnících", level=Qgis.Info, duration = 0)
+            # mess_bar("Testování dotazu", "Hledám zadané parametry v číselnících", level=Qgis.Info, duration = 0)
 
-            ls_t = get_list("rfTaxon")
-            
-            if taxon != "":
-                if taxon.lower() not in ls_t.lower():
-                    return mess_bar("Taxon nenalezen!"
-                                    , "Neplatný název taxonu. Zadejte prosím přesný název"
-                                    ,Qgis.Warning
-                                    ,5
-                    )
+            # if taxon != "":
+                # if taxon.lower() not in ls_t.lower():
+                    # return mess_bar("Taxon nenalezen!"
+                                    # , "Neplatný název taxonu. Zadejte prosím přesný název"
+                                    # ,Qgis.Warning
+                                    # ,5
+                    # )
 
             mess_bar("Přihlašování", "Přihlášení do systému ISOP", level=Qgis.Info, duration = 0)
       
