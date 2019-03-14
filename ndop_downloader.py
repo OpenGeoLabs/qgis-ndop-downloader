@@ -279,8 +279,8 @@ class NDOPDownloader:
                 # plugintak jak má kvůli konkrétnímu výběru v comboboxu.
                 # Funkce se tam musí doladit.
                 for i in num_reg:
-                    if i['col1'] == region.startswith(i['col1']):
-                        region = i
+                    if region.startswith(i['col1']):
+                        region = i['val']
                         reg_type = i['type']
                         if reg_type == 'KU':
                             search_payload['rfKatastr'] = i['val']
@@ -293,7 +293,7 @@ class NDOPDownloader:
                         elif reg_type == 'PO':
                             search_payload['rfPO'] = i['val']
 
-                        
+
             if self.dlg.mQgsFileWidget.filePath () == mQgsFileWidget_def:
                 self.dlg.mQgsFileWidget.setFilePath(tempfile.gettempdir())
 
@@ -358,7 +358,7 @@ class NDOPDownloader:
             if taxon != "":
                 file_names = taxon.replace(" ", "_")
             else:
-                file_names = region['val'].replace(" ", "_").replace(":","")
+                file_names = region.replace(" ", "_").replace(":","")
                 
             try:
                 ndop.get_ndop_shp_data(s,str(Path(data_path,file_names)))
@@ -389,7 +389,7 @@ class NDOPDownloader:
                         'file://{}?type=csv&detectTypes=yes&crs={}&'
                         'delimiter={}&xField={}&yField={}&decimalPoint={}'
                     ).format(
-                        str(Path(data_path,filename)),
+                        str(Path(data_path,urllib.parse.quote(filename))),
                         "EPSG:5514", ",", "X", "Y", ","
                     )
                     layer = iface.addVectorLayer(
