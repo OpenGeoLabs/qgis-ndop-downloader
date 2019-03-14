@@ -22,10 +22,8 @@
  ***************************************************************************/
 """
 from PyQt5.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
-# from PyQt5.QtGui import QIcon
-from PyQt5.QtGui import *
-# from PyQt5.QtWidgets import QAction, QWidget, QApplication, QCompleter, QComboBox
-from PyQt5.QtWidgets import *
+from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import QAction, QWidget, QApplication, QCompleter, QComboBox
 
 # Initialize Qt resources from file resources.py
 from .resources import *
