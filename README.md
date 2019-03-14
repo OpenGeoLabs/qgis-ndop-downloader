@@ -1,4 +1,4 @@
-#NDOP Downloader
+# NDOP Downloader
 
 NDOP Downloader je aplikace, která slouží ke stahování nálezů z Nálezové
 Databáze Agentury ochrany přírody a krajiny ČR ([AOPK NDOP](https://portal.nature.cz/nd/))
@@ -17,7 +17,7 @@ Pro použití databáze je nutné
  AOPK (ISOP).
 
 
-##QGIS Plugin - NDOP Downloader
+## QGIS Plugin - NDOP Downloader
 Zásuvný modul slouží ke stahování dat z nálezové databáze AOPK. V
 současné verzi je možné filtrovat na základě taxonu (druh. rod)
 a regionu (katastrální území, CHKO, PP, atd.).
@@ -29,7 +29,7 @@ souřadnic z tabulky se zobrazí jako bodová vrstva.
 
     obr
 
-###Instalace a Spouštění
+### Instalace a Spouštění
 
 Zásuvný modul předpokládá verzi LTR QGIS 3.4. Instaluje se jako ostatní
 moduly pomocí menu `Zásuvné moduly --> Spravovat a instalovat zásuvné moduly`.
@@ -50,12 +50,12 @@ Vyhledáme `NDOP Downloader`, a nainstalujeme pomocí tlačítka
 Po instalaci se přidá do menu `Zásuvné moduly` položka `NDOP Downloader`
 a pro rychlé spuštění se objeví ikonka v liště.
 
-###Popis rozhraní
+### Popis rozhraní
 
     obrázek okna
 
 
-####Přihlášení
+#### Přihlášení
 
 Zadejte přihlašovací údaje pro informačním systém AOPK (ISOP). Pokud
 zaškrtnete položku `Uložit přihlašovací údaje`, údaje se uloží do
@@ -63,14 +63,14 @@ konfiguračního souboru a při dalším použití budou předvyplněna
 
     obrázek předvyplněých údajů
 
-####Taxon
+#### Taxon
 
 Druh lze vybrat pomocí rolovací nabídky, nebo vepsáním názvu s funkcí
 našeptávače. Lze zadávat česká i latinská jména.
 
     gif?
 
-####Region
+#### Region
 
 Obdobně jako u taxonu. V případě že položka zůstane nevyplněná, získáme
 data z clého území ČR. Naopak, pokud vybyreme území regionu a necháme
@@ -78,14 +78,14 @@ prázdné políčko taxonu, získáme data všech taxonů ve vybraném regionu.
 
     gif?
 
-####Výstupní složka
+#### Výstupní složka
 
 
 Vybereme výsupní složku kam se nám data uloží. Pokud ponecháme prázdné,
 stáhnou se data do složky dočasných souborů. V případě, že nechcete
 stahovat tabulková data zaškrtněte možnost `Nestahovat tabulková data`.
 
-###Průběh stahování
+### Průběh stahování
 
 Po potvrzení tlačítkem `Ok` se okno zavře a spustí se filtrace a
 stahování. QGIS během stahování **nelze používat**. Stejně jako při
@@ -101,7 +101,7 @@ odkazem na složku kam byla data stažena.
 
     obr
 
-###Plánované funkce
+### Plánované funkce
 
 - automatické vytvoření relace tabulkových dat a lokalizací (1:n)
 - výběr na základě období a sezóny
@@ -109,6 +109,6 @@ odkazem na složku kam byla data stažena.
 - další parametry - zdroje dat
 - možnost zadání více taxonů (např. pomocí seznamu)
 
-##Python modul ndop.py
+## Python modul ndop.py
 
 Pro dávkové zpracování lze využít python modul a nástroj příkazové řádky
