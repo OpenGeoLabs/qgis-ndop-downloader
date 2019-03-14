@@ -109,6 +109,17 @@ odkazem na složku kam byla data stažena.
 - další parametry - zdroje dat
 - možnost zadání více taxonů (např. pomocí seznamu)
 
+
+Pro připomínky, nápady a hlášení chyb můžete použít [issues projektu na GitHub ](https://github.com/OpenGeoLabs/qgis-ndop-downloader/issues), nebo napsat na
+mail ...
+
 ## Python modul ndop.py
 
 Pro dávkové zpracování lze využít python modul a nástroj příkazové řádky
+
+
+## Licence
+## Reference
+
+
+
