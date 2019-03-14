@@ -223,12 +223,10 @@ class NDOPDownloader:
         # self.dlg.combo_taxon.addItems([""]+num_t)
         
         num_t = get_numberer("rfTaxon")
-        self.dlg.combo_taxon.clear()
         self.dlg.combo_taxon.completer().setCompletionMode(0)
         self.dlg.combo_taxon.addItems([""]+[d['col1'] for d in num_t])
         
         num_reg = get_numberer("multiple")
-        self.dlg.combo_region.clear()
         self.dlg.combo_region.completer().setCompletionMode(0)
         self.dlg.combo_region.addItems([""]+[d['col1'] for d in num_reg])
 
