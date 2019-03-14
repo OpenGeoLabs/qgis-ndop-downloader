@@ -39,6 +39,7 @@ from qgis.core import Qgis
 import requests
 import tempfile
 import csv
+import urllib
 
 class NDOPDownloader:
     """QGIS Plugin Implementation."""
