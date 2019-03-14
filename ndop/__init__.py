@@ -296,7 +296,7 @@ def get_ndop_csv_data(s,num_rec,table_payload,output_name):
 
     t = sum(csv_table,[])
 
-    with open(output_name+"_csv.csv", "w") as f:
+    with open(output_name+"_tab.csv", "w") as f:
         writer = csv.writer(f)
         writer.writerows(t)
 
