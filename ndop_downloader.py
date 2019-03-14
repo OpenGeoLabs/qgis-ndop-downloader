@@ -371,12 +371,12 @@ class NDOPDownloader:
                 return mess_bar("Hups", "Stahování selhalo", level=Qgis.Critical)
 
             for filename in os.listdir(data_path):
-                if filename.endswith("zip"):
+                if filename.endswith("zip") and filename.startswith(file_names):
                     layer = iface.addVectorLayer(str(Path(data_path,filename)), "", "ogr")
                     if not layer:
                         print("Layer failed to load!")
                 
-                if filename.endswith(".csv"):
+                if filename.endswith(".csv") and filename.startswith(file_names):
                     uri = (
                         'file://{}?type=csv&detectTypes=yes&crs={}&'
                         'delimiter={}&xField={}&yField={}&decimalPoint={}'
