@@ -260,15 +260,16 @@ class NDOPDownloader:
             taxon = self.dlg.combo_taxon.currentText()
             region = self.dlg.combo_region.currentText()
 
-            
-
 #           polygon=self.dlg.mMapLayerComboBox.currentLayer()
 
             search_payload = ndop.get_search_pars(taxon=taxon)
-
+            
             if region == '':
                 region = None
             else:
+                #toto je zatím tady protože to v bin/ndop nefunguje pro
+                # plugintak jak má kvůli konkrétnímu výběru v comboboxu.
+                # Funkce se tam musí doladit.
                 for i in num_reg:
                     if i['col1'] == region:
                         region = i
@@ -370,12 +371,12 @@ class NDOPDownloader:
                 return mess_bar("Hups", "Stahování selhalo", level=Qgis.Critical)
 
             for filename in os.listdir(data_path):
-                if filename.endswith("zip") and filename.startswith(file_names):
+                if filename.endswith("zip"):
                     layer = iface.addVectorLayer(str(Path(data_path,filename)), "", "ogr")
                     if not layer:
                         print("Layer failed to load!")
                 
-                if filename.endswith(".csv") and filename.startswith(file_names):
+                if filename.endswith(".csv"):
                     uri = (
                         'file://{}?type=csv&detectTypes=yes&crs={}&'
                         'delimiter={}&xField={}&yField={}&decimalPoint={}'
