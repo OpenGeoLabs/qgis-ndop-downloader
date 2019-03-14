@@ -26,7 +26,8 @@ Výstupem jsou dostupná data lokalizací (.shp komprimované v .zip)
 a tabulková data (.csv) pro všechny záznamy. Lokalizace se po ukončení
 stahování nahrají do projektu. Tabulková data se nahrají do projektu
 jako `Oddělený text` a na základě souřadnic z tabulky se zobrazí jako
-bodová vrstva. Tato data obsahují body a centroidy polygonů a linií.
+bodová vrstva. Tato data obsahují body a centroidy většiny polygonů a
+linií.
 
     obr
 
