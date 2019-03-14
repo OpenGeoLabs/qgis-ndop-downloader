@@ -383,6 +383,7 @@ class NDOPDownloader:
             for filename in os.listdir(data_path):
                 if filename.endswith("zip") and filename.startswith(file_names):
                     layer = iface.addVectorLayer(str(Path(data_path,filename)), "", "ogr")
+                    layer.setName(filename[:-4])
                     if not layer:
                         print("Layer failed to load!")
                 
@@ -395,7 +396,7 @@ class NDOPDownloader:
                         "EPSG:5514", ",", "X", "Y", ","
                     )
                     layer = iface.addVectorLayer(
-                        uri, filename+"_centroids", "delimitedtext"
+                        uri, filename[:-4], "delimitedtext"
                     )
 
             mess_bar("Hotovo", "Data stažena do složky: <a href='file://{0}'>{0}/</a>".format(data_path), level=Qgis.Success, duration = 10)
