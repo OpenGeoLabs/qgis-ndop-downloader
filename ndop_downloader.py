@@ -40,6 +40,7 @@ from qgis.core import Qgis
 # from PyQt5.QtWidgets import QPushButton
 import requests
 import tempfile
+
 class NDOPDownloader:
     """QGIS Plugin Implementation."""
 
@@ -188,7 +189,7 @@ class NDOPDownloader:
             self.iface.removeToolBarIcon(action)
         # remove the toolbar
         del self.toolbar
-
+        
 
     def run(self):
         """Run method that performs all the real work"""
@@ -207,18 +208,27 @@ class NDOPDownloader:
         #stažení číselníku - dá se úplně bokem a vytvoří se soubor s číselníky
         import json
 
-        def get_list(filt_par):
+        def get_numberer(filt_par):
             s = requests.Session()
             url = ("https://portal.nature.cz/nd/nd_modals/"
                    "modals.php?opener={}&promka=").format(filt_par)
             ls = s.get(url).text
-            return ls
-                    
-        ls_t = get_list("rfTaxon")
-        json_string = ls_t[9:-1]
-        dict_t = json.loads(json_string)
+            json_string = ls[9:-1]
+            num_dict = json.loads(json_string)
+            
+            return num_dict
 
-        self.dlg.combo_taxon.addItems([""]+[d['val'] for d in dict_t])
+        # num_t = ["abcde","cdeef","1524654 abcd"]
+
+        # self.dlg.combo_taxon.addItems([""]+num_t)
+        
+        num_t = get_numberer("rfTaxon")
+        self.dlg.combo_taxon.completer().setCompletionMode(0)
+        self.dlg.combo_taxon.addItems([""]+[d['val'] for d in num_t])
+        
+        num_reg = get_numberer("multiple")
+        self.dlg.combo_region.completer().setCompletionMode(0)
+        self.dlg.combo_region.addItems([""]+[d['col1'] for d in num_reg])
 
         self.dlg.mQgsFileWidget.setStorageMode(1)
         mQgsFileWidget_def = "Uložit do dočasných souborů"
@@ -248,16 +258,33 @@ class NDOPDownloader:
                         config.write(configfile)
 
             taxon = self.dlg.combo_taxon.currentText()
-            # region = self.dlg.line_region.text()
-            # if region == '':
-                # region = None
+            region = self.dlg.combo_region.currentText()
+
+            
 
 #           polygon=self.dlg.mMapLayerComboBox.currentLayer()
 
-            search_payload = ndop.get_search_pars(taxon=taxon
-                                                # ,region=region
-                                                )
-            
+            search_payload = ndop.get_search_pars(taxon=taxon)
+
+            if region == '':
+                region = None
+            else:
+                for i in num_reg:
+                    if i['col1'] == region:
+                        region = i
+                        reg_type = i['type']
+                        if reg_type == 'KU':
+                            search_payload['rfKatastr'] = i['val']
+                        elif reg_type == 'MZCHU':
+                            search_payload['rfMZCHU'] = i['val']
+                        elif reg_type == 'EVL':
+                            search_payload['rfEVL'] = i['val']
+                        elif reg_type == 'VZCHU':
+                            search_payload['rfVZCHU'] = i['val']
+                        elif reg_type == 'PO':
+                            search_payload['rfPO'] = i['val']
+
+                        
             if self.dlg.mQgsFileWidget.filePath () == mQgsFileWidget_def:
                 self.dlg.mQgsFileWidget.setFilePath(tempfile.gettempdir())
 
@@ -319,7 +346,11 @@ class NDOPDownloader:
             mess_bar("Stahování", "Stahování lokalizací - počet záznamů: "+str(num_rec)+" (odhadovaná doba: 1 minuta)", Qgis.Info, 0)
             # mess_bar_butt("Stahování", "Stahování lokalizací - počet výsledků: "+str(num_rec)+" (odhadovaná doba: 1 minuta)", Qgis.Info, 0)
 
-            file_names = taxon.replace(" ", "_") 
+            if taxon != "":
+                file_names = taxon.replace(" ", "_")
+            else:
+                file_names = region['val'].replace(" ", "_").replace(":","")
+                
             try:
                 ndop.get_ndop_shp_data(s,str(Path(data_path,file_names)))
             except:
@@ -339,12 +370,12 @@ class NDOPDownloader:
                 return mess_bar("Hups", "Stahování selhalo", level=Qgis.Critical)
 
             for filename in os.listdir(data_path):
-                if filename.endswith("zip"):
+                if filename.endswith("zip") and filename.startswith(file_names):
                     layer = iface.addVectorLayer(str(Path(data_path,filename)), "", "ogr")
                     if not layer:
                         print("Layer failed to load!")
                 
-                if filename.endswith(".csv"):
+                if filename.endswith(".csv") and filename.startswith(file_names):
                     uri = (
                         'file://{}?type=csv&detectTypes=yes&crs={}&'
                         'delimiter={}&xField={}&yField={}&decimalPoint={}'
