@@ -279,7 +279,7 @@ class NDOPDownloader:
                 # plugintak jak má kvůli konkrétnímu výběru v comboboxu.
                 # Funkce se tam musí doladit.
                 for i in num_reg:
-                    if i['col1'] == startswith(region):
+                    if i['col1'] == region.startswith(i['col1']):
                         region = i
                         reg_type = i['type']
                         if reg_type == 'KU':
