@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>392</width>
-    <height>561</height>
+    <width>385</width>
+    <height>506</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>500</y>
+     <y>460</y>
      <width>341</width>
      <height>40</height>
     </rect>
@@ -117,7 +117,7 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>210</y>
+     <y>170</y>
      <width>361</width>
      <height>101</height>
     </rect>
@@ -144,9 +144,9 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>30</y>
-      <width>261</width>
+      <x>10</x>
+      <y>50</y>
+      <width>331</width>
       <height>25</height>
      </rect>
     </property>
@@ -165,8 +165,8 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>320</y>
-     <width>351</width>
+     <y>280</y>
+     <width>361</width>
      <height>101</height>
     </rect>
    </property>
@@ -192,9 +192,9 @@
     </property>
     <property name="geometry">
      <rect>
-      <x>70</x>
-      <y>40</y>
-      <width>261</width>
+      <x>10</x>
+      <y>60</y>
+      <width>331</width>
       <height>25</height>
      </rect>
     </property>
@@ -209,9 +209,9 @@
   <widget class="QgsFileWidget" name="mQgsFileWidget">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>460</y>
-     <width>351</width>
+     <x>10</x>
+     <y>420</y>
+     <width>361</width>
      <height>27</height>
     </rect>
    </property>
@@ -228,8 +228,8 @@
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>430</y>
+     <x>10</x>
+     <y>390</y>
      <width>281</width>
      <height>17</height>
     </rect>
