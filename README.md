@@ -1,4 +1,4 @@
-![icon](icon.png) NDOP Downloader
+![Alt Text](icon.png) NDOP Downloader
 =================================
 NDOP Downloader je aplikace, která slouží ke stahování nálezů z Nálezové
 Databáze Agentury ochrany přírody a krajiny ČR ([AOPK NDOP](https://portal.nature.cz/nd/))
