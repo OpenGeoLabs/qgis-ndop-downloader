@@ -393,7 +393,7 @@ class NDOPDownloader:
                         "EPSG:5514", ",", "X", "Y", ","
                     )
                     layer = iface.addVectorLayer(
-                        uri, "centroids_"+filename, "delimitedtext"
+                        uri, filename+"_centroids", "delimitedtext"
                     )
 
             mess_bar("Hotovo", "Data stažena do složky: <a href='file://{0}'>{0}/</a>".format(data_path), level=Qgis.Success, duration = 10)
