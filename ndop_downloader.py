@@ -346,7 +346,6 @@ class NDOPDownloader:
             
             try:
                 table_payload, num_rec = ndop.search_filter(s,search_payload)
-
             except:
                 return mess_bar("Hups", "Filtrování selhalo", level=Qgis.Critical)
 
