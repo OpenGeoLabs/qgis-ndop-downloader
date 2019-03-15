@@ -39,7 +39,6 @@ from qgis.core import Qgis, QgsCoordinateReferenceSystem
 import requests
 import tempfile
 import csv
-import urllib
 
 class NDOPDownloader:
     """QGIS Plugin Implementation."""
@@ -388,7 +387,7 @@ class NDOPDownloader:
                         '{}?type=csv&detectTypes=yes&crs={}&'
                         'delimiter={}&xField={}&yField={}&decimalPoint={}'
                     ).format(
-                        Path(data_path,urllib.parse.quote(filename)).as_uri(),
+                        Path(data_path,filename).as_uri(),
                         "EPSG:5514", ",", "X", "Y", ","
                     )
                     layer = iface.addVectorLayer(
