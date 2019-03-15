@@ -300,7 +300,7 @@ def get_ndop_csv_data(s,num_rec,table_payload,output_name):
         writer = csv.writer(f)
         writer.writerows(t)
 
-    print("CSV table downloaded: {}_csv.csv".format(output_name))
+    print("CSV table downloaded: {}_tab.csv".format(output_name))
     return t
 
 def get_ndop_shp_data(s,output_name):
