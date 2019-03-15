@@ -2,9 +2,8 @@
 
 NDOP Downloader je aplikace, která slouží ke stahování nálezů z Nálezové
 Databáze Agentury ochrany přírody a krajiny ČR ([AOPK NDOP](https://portal.nature.cz/nd/))
-. Aplikace je dostupná ve dvou formách, jako **QGIS zásuvný modul** a
-samostatný **Python modul** -- nástroj příkazové řádky, který je jeho
-základem. 
+. Aplikace je dostupná ve dvou formách, jako **QGIS zásuvný modul** jehož
+základ tvoří samostatný **Python moduls** s nástrojem příkazové řádky.
 
 NDOP Downloader pouze zprostředkovává přístup k datům. Veškeré informace
 o datech - fungování databáze, licenční podmínky, citační pravidla týkající
@@ -12,15 +11,15 @@ se dat naleznete na portálu
 [ISOP](https://portal.nature.cz/publik_syst/ctihtmlpage.php?what=1021&nabidka=rozbalitModul&modulID=21)
 .
 
-Pro použití databáze je nutné
-[vytvořit účet](https://idm.nature.cz/idm/#/registration) v informačním systému
- AOPK (ISOP).
+**Pro použití** databáze je **nutné
+[vytvořit účet](https://idm.nature.cz/idm/#/registration)** v informačním
+systému AOPK (ISOP).
 
 
 ## QGIS Plugin - NDOP Downloader
 Zásuvný modul slouží ke stahování dat z nálezové databáze AOPK. V
-současné verzi je možné filtrovat na základě taxonu (druh. rod)
-a regionu (katastrální území, CHKO, PP, atd.).
+současné verzi je možné filtrovat na základě taxonu (druh,popř. rod)
+a definovaných regionů (katastrální území, CHKO, PP, atd.).
 
 Výstupem jsou dostupná data lokalizací (.shp komprimované v .zip)
 a tabulková data (.csv) pro všechny záznamy. Lokalizace se po ukončení
