@@ -28,7 +28,7 @@ jako `Oddělený text` a na základě souřadnic z tabulky se zobrazí jako
 bodová vrstva. Tato data obsahují body a centroidy většiny polygonů a
 linií.
 
-    obr
+    ![](/static/images/dialog.png)
 
 ### Instalace a Spouštění
 
@@ -60,7 +60,9 @@ a pro rychlé spuštění se objeví ikonka v liště.
 
 Zadejte přihlašovací údaje pro informačním systém AOPK (ISOP). Pokud
 zaškrtnete položku `Uložit přihlašovací údaje`, údaje se uloží do
-konfiguračního souboru a při dalším použití budou předvyplněna
+konfiguračního souboru a při dalším použití budou předvyplněna. V opačném
+případě budou údaje uložené pouze v rámci běžící instance QGIS, při dalším
+spuštění QGIS je bude potřeba zadat znovu.
 
     obrázek předvyplněých údajů
 
@@ -118,9 +120,8 @@ mail ...
 
 Pro dávkové zpracování lze využít python modul a nástroj příkazové řádky
 
-
+...
 ## Licence
+...
 ## Reference
-
-
-
+...
