@@ -387,10 +387,10 @@ class NDOPDownloader:
                 
                 if filename.endswith(".csv") and filename.startswith(file_names):
                     uri = (
-                        'file://{}?type=csv&detectTypes=yes&crs={}&'
+                        '{}?type=csv&detectTypes=yes&crs={}&'
                         'delimiter={}&xField={}&yField={}&decimalPoint={}'
                     ).format(
-                        str(Path(data_path,urllib.parse.quote(filename))),
+                        Path(data_path,urllib.parse.quote(filename)).as_uri(),
                         "EPSG:5514", ",", "X", "Y", ","
                     )
                     layer = iface.addVectorLayer(
