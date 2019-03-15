@@ -24,9 +24,8 @@ a definovaných regionů (katastrální území, CHKO, PP, atd.).
 Výstupem jsou dostupná data lokalizací (.shp komprimované v .zip)
 a tabulková data (.csv) pro všechny záznamy. Lokalizace se po ukončení
 stahování nahrají do projektu. Tabulková data se nahrají do projektu
-jako `Oddělený text` a na základě souřadnic z tabulky se zobrazí jako
-bodová vrstva. Tato data obsahují body a centroidy většiny polygonů a
-linií.
+jako `Oddělený text` a zobrazí se jako body (na základě souřadnic v
+tabulce). Tato data obsahují body a centroidy většiny polygonů a linií.
 
 ![](static/images/main.png)
 
@@ -60,7 +59,7 @@ a pro rychlé spuštění se objeví ikonka v liště.
 
 Zadejte přihlašovací údaje pro informačním systém AOPK (ISOP). Pokud
 zaškrtnete položku `Uložit přihlašovací údaje`, údaje se uloží do
-konfiguračního souboru a při dalším použití budou předvyplněna. V opačném
+konfiguračního souboru a při dalším použití budou předvyplněny. V opačném
 případě budou údaje uložené pouze v rámci běžící instance QGIS, při dalším
 spuštění QGIS je bude potřeba zadat znovu.
 
@@ -85,8 +84,22 @@ prázdné políčko taxonu, získáme data všech taxonů ve vybraném regionu.
 
 
 Vybereme výsupní složku kam se nám data uloží. Pokud ponecháme prázdné,
-stáhnou se data do složky dočasných souborů. V případě, že nechcete
-stahovat tabulková data zaškrtněte možnost `Nestahovat tabulková data`.
+stáhnou se data do složky dočasných souborů. V případě, že nechceme
+stahovat tabulková data zaškrtneme možnost `Nestahovat tabulková data`.
+
+Stažené soubory se nahrají do projektu a ponesou název odvozený od
+použitého filtru a typu dat.
+
+Příklad:
+
+- `Mantis_religiosa_shp_b` - bodová vrstva (.shp)
+- `Mantis_religiosa_shp_p` - polygonová vrstva (.shp)
+- `Mantis_religiosa_shp_l` - liniová vrstva (.shp)
+- `Mantis_religiosa_tab` - tabulková data (.csv), v projektu se zobrazí
+body (souřadnice ze sloupečků `X` a `Y`)
+
+Pokud je do filtru zadán taxon, bude název odvozen od názvu druhu. Poukd
+filtrujeme pouze podle regionu bude název odvozen od názvu regionu.
 
 ### Průběh stahování
 
