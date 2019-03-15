@@ -29,6 +29,10 @@ bodová vrstva. Tato data obsahují body a centroidy většiny polygonů a
 linií.
 
 ![](static/images/dialog.png)
+<<<<<<< HEAD
+=======
+
+>>>>>>> update:readme
 
 ### Instalace a Spouštění
 
@@ -79,7 +83,7 @@ Obdobně jako u taxonu. V případě že položka zůstane nevyplněná, získá
 data z clého území ČR. Naopak, pokud vybyreme území regionu a necháme
 prázdné políčko taxonu, získáme data všech taxonů ve vybraném regionu.
 
-    gif?
+![](static/images/filter_taxon.gif)
 
 #### Výstupní složka
 
