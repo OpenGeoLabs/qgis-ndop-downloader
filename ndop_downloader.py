@@ -379,6 +379,8 @@ class NDOPDownloader:
             for filename in os.listdir(data_path):
                 if filename.endswith("zip") and filename.startswith(file_names):
                     layer = iface.addVectorLayer(str(Path(data_path,filename)), "", "ogr")
+                    #zabrani vyskoceni crs okna
+                    layer.setCrs(QgsCoordinateReferenceSystem(5514))
                     layer.setName(filename[:-4])
                     if not layer:
                         print("Layer failed to load!")
