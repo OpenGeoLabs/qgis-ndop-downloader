@@ -28,7 +28,7 @@ jako `Oddělený text` a na základě souřadnic z tabulky se zobrazí jako
 bodová vrstva. Tato data obsahují body a centroidy většiny polygonů a
 linií.
 
-    ![](/static/images/dialog.png)
+    ![](static/images/dialog.png)
 
 ### Instalace a Spouštění
 
