@@ -3,7 +3,7 @@
 NDOP Downloader je aplikace, která slouží ke stahování nálezů z Nálezové
 Databáze Agentury ochrany přírody a krajiny ČR ([AOPK NDOP](https://portal.nature.cz/nd/))
 . Aplikace je dostupná ve dvou formách, jako **QGIS zásuvný modul** jehož
-základ tvoří samostatný **Python moduls** s nástrojem příkazové řádky.
+základ tvoří samostatný Python modul s **nástrojem příkazové řádky**.
 
 NDOP Downloader pouze zprostředkovává přístup k datům. Veškeré informace
 o datech - fungování databáze, licenční podmínky, citační pravidla týkající
@@ -28,7 +28,7 @@ jako `Oddělený text` a na základě souřadnic z tabulky se zobrazí jako
 bodová vrstva. Tato data obsahují body a centroidy většiny polygonů a
 linií.
 
-![](static/images/dialog.png)
+![](static/images/main.png)
 
 ### Instalace a Spouštění
 
@@ -53,7 +53,7 @@ a pro rychlé spuštění se objeví ikonka v liště.
 
 ### Popis rozhraní
 
-    obrázek okna
+![](static/images/dialog.png)
 
 
 #### Přihlášení
@@ -71,7 +71,7 @@ spuštění QGIS je bude potřeba zadat znovu.
 Druh lze vybrat pomocí rolovací nabídky, nebo vepsáním názvu s funkcí
 našeptávače. Lze zadávat česká i latinská jména.
 
-    gif?
+![](static/images/filter_taxon.gif)   
 
 #### Region
 
@@ -79,7 +79,7 @@ Obdobně jako u taxonu. V případě že položka zůstane nevyplněná, získá
 data z clého území ČR. Naopak, pokud vybyreme území regionu a necháme
 prázdné políčko taxonu, získáme data všech taxonů ve vybraném regionu.
 
-![](static/images/filter_taxon.gif)
+![](static/images/filter_region.png)
 
 #### Výstupní složka
 
@@ -91,34 +91,39 @@ stahovat tabulková data zaškrtněte možnost `Nestahovat tabulková data`.
 ### Průběh stahování
 
 Po potvrzení tlačítkem `Ok` se okno zavře a spustí se filtrace a
-stahování. QGIS během stahování **nelze používat**. Stejně jako při
-použití oficiální webové aplikace, stahování může trvat několik minut v
-závislosti na počtu záznamů, stažení tabulkových dat atd.
+stahování. QGIS během stahování **nelze v současné době používat**.
+Stejně jako při použití oficiální webové aplikace, stahování může trvat
+několik minut, v závislosti na počtu záznamů, stažení tabulkových dat atd.
 
-    obr
+![](static/images/message.png)
 
 V informačním panelu v horní části obrazovky uvidíte informace o průběhu
 stahování. Při stahování se také vypíše počet záznamů a hrubý odhad doby
 trvání konkrétního kroku. Po úspěšném stažení se objeví zelený panel s
 odkazem na složku kam byla data stažena.
 
-    obr
+![](static/images/result.png)
 
-### Plánované funkce
+### Plánované funkce - zpětná vazba
 
-- automatické vytvoření relace tabulkových dat a lokalizací (1:n)
-- výběr na základě období a sezóny
+Výběr plánovaných funkcí:
+
 - zadání oblasti tažením a použítím polygonu z vrstvy
-- další parametry - zdroje dat
-- možnost zadání více taxonů (např. pomocí seznamu)
+- přidání filtru druhové ochrany
+- automatické vytvoření relace tabulkových dat a lokalizací (1:n)
 
+seznam aktuálně plánovaných funkcí [zde](https://github.com/OpenGeoLabs/qgis-ndop-downloader/issues?q=is%3Aopen+is%3Aissue+label%3Aenhancement) 
 
-Pro připomínky, nápady a hlášení chyb můžete použít [issues projektu na GitHub ](https://github.com/OpenGeoLabs/qgis-ndop-downloader/issues), nebo napsat na
-mail ...
+Pro připomínky, nápady a hlášení chyb můžete napsat email nebo použít [issues projektu na GitHub ](https://github.com/OpenGeoLabs/qgis-ndop-downloader/issues).
 
-## Python modul ndop.py
+## Nástroj příkazové řádky ndop
 
-Pro dávkové zpracování lze využít python modul a nástroj příkazové řádky
+Pro dávkové zpracování lze využít Python nástroj příkazové řádky **ndop**
+
+    python3 bin/ndop -h
+    
+    python3 bin/ndop --taxon "lynx lynx"
+
 
 ...
 ## Licence
