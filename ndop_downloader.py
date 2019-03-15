@@ -350,9 +350,6 @@ class NDOPDownloader:
             except:
                 return mess_bar("Hups", "Filtrování selhalo", level=Qgis.Critical)
 
-            def showError():
-                return mess_bar("Konec", "Akce zrušena", level=Qgis.Warning)
-
             mess_bar("Stahování", "Stahování lokalizací - počet záznamů: "+str(num_rec)+" (odhadovaná doba: 1 minuta)", Qgis.Info, 0)
             # mess_bar_butt("Stahování", "Stahování lokalizací - počet výsledků: "+str(num_rec)+" (odhadovaná doba: 1 minuta)", Qgis.Info, 0)
 
