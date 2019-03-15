@@ -33,7 +33,7 @@ import os.path
 from pathlib import Path
 from qgis.utils import iface
 from . import ndop
-from qgis.core import Qgis
+from qgis.core import Qgis, QgsCoordinateReferenceSystem
 
 # from PyQt5.QtWidgets import QPushButton
 import requests
@@ -302,8 +302,6 @@ class NDOPDownloader:
 
             # data_path = Path(plugin_path,"downloaded_data")
 
-
-
             def mess_bar (head,desc,level,duration=5):
                 iface.messageBar().clearWidgets()
                 iface.messageBar().pushMessage(head, desc, level, duration)
@@ -380,7 +378,7 @@ class NDOPDownloader:
                 if filename.endswith("zip") and filename.startswith(file_names):
                     layer = iface.addVectorLayer(str(Path(data_path,filename)), "", "ogr")
                     #zabrani vyskoceni crs okna
-                    layer.setCrs(QgsCoordinateReferenceSystem(5514))
+                    layer.setCrs(QgsCoordinateReferenceSystem("EPSG:5514"))
                     layer.setName(filename[:-4])
                     if not layer:
                         print("Layer failed to load!")
