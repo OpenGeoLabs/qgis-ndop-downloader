@@ -29,10 +29,6 @@ bodová vrstva. Tato data obsahují body a centroidy většiny polygonů a
 linií.
 
 ![](static/images/dialog.png)
-<<<<<<< HEAD
-=======
-
->>>>>>> update:readme
 
 ### Instalace a Spouštění
 
