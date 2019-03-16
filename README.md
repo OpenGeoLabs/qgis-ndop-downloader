@@ -138,6 +138,40 @@ python skriptu (`import ndop`)
     
     ndop --taxon "mantis religiosa"
 
+    ndop -h
+
+    usage: ndop [-h] [--user USER] [--password PASSWORD] [--output OUTPUT]
+                [--taxon TAXON] [--region REGION] [--polygon POLYGON]
+                [--month_from MONTH_FROM] [--month_to MONTH_TO]
+                [--date_from DATE_FROM] [--date_to DATE_TO] [--author AUTHOR]
+                [--project PROJECT] [--source SOURCE] [--d_source D_SOURCE]
+                [--config CONFIG]
+
+    Download data (.csv, .shp) from NDOP based on input parametres. Unlike the
+    offical web filter, its possible to input polygon layer for search in area and
+    amount of results is not limited. Login can be stored in configuration file
+    ".ndop.cfg".
+
+    optional arguments:
+      -h, --help            show this help message and exit
+      --user USER           login (user name or email)
+      --password PASSWORD   ISOP password
+      --output OUTPUT       path with output filenames prefix
+      --taxon TAXON         taxon name (i.e. "mantis religiosa")
+      --region REGION       region of iterest (i.e. town , protected area)
+      --polygon POLYGON     path to poygon layer (EPSG:5514) that define thesearch
+                            area. Function takes first feature of the layer
+      --month_from MONTH_FROM
+                            get data only from a certain month in season (number)
+      --month_to MONTH_TO   get data only to a certain month in season (number)
+      --date_from DATE_FROM
+                            get data from a certain date (d.m.yyyy)
+      --date_to DATE_TO     get data only to a certain date (d.m.yyyy)
+      --author AUTHOR       author surname and firstname (i.e. "Kaláb Oto")
+      --project PROJECT     for data obtained from specific project
+      --source SOURCE       general source of data (i.e. "ND - Databáze BioLog")
+      --d_source D_SOURCE   specific, more detailed source of data
+      --config CONFIG       path to the config file with login and password.
 
 ...
 ## Licence
