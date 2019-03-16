@@ -9,15 +9,20 @@
 [general]
 name=NDOP Downloader
 qgisMinimumVersion=3.0
-description=downlaoder
-version=0.1
+description=NDOP Downloader slouží ke stahování dat z Nálezové databáze AOPK.
+version=0.1.0
 author=Oto Kaláb
 email=oto.kalab@opengeolabs.cz
 
-about=Provide a brief description of the plugin and its purpose.
+about=NDOP Downloader slouží ke stahování dat z nálezové databáze AOPK.
+    Výstupem jsou dostupná data lokalizací (.shp komprimované v .zip) a
+    tabulková data (.csv) pro všechny záznamy. Lokalizace se po ukončení
+    stahování nahrají do projektu. Tabulková data se nahrají do projektu
+    jako Oddělený text a zobrazí se jako body (na základě souřadnic v
+    tabulce). Tato data obsahují body a centroidy většiny polygonů a linií.
 
-tracker=http://bugs
-repository=http://repo
+tracker=https://github.com/OpenGeoLabs/qgis-ndop-downloader/issues
+repository=https://github.com/OpenGeoLabs/qgis-ndop-downloader
 # End of mandatory metadata
 
 # Recommended items:
@@ -26,10 +31,10 @@ repository=http://repo
 # changelog=
 
 # Tags are comma separated with spaces allowed
-tags=python
+tags=ecology, species, occurrence, download
 
-homepage=http://homepage
-category=Plugins
+homepage=https://opengeolabs.github.io/qgis-ndop-downloader/
+# category=Download
 icon=icon.png
 # experimental flag
 experimental=False
