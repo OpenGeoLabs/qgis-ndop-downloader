@@ -3,7 +3,7 @@
 NDOP Downloader je aplikace, která slouží ke stahování nálezů z
 [Nálezové databáze ochrany přírody AOPK ČR](https://cs.wikipedia.org/wiki/N%C3%A1lezov%C3%A1_datab%C3%A1ze_ochrany_p%C5%99%C3%ADrody).
 Aplikace je dostupná ve dvou formách, jako **QGIS zásuvný modul**, jehož
-základ tvoří samostatný Python modul s **nástrojem příkazové řádky**.
+základ tvoří Python balíček *ndop-downloader* s nástrojem příkazové řádky **ndop**.
 
 NDOP Downloader pouze zprostředkovává přístup k datům. Veškeré informace
 o datech - fungování databáze, licenční podmínky, citační pravidla týkající
@@ -128,13 +128,15 @@ seznam aktuálně plánovaných funkcí [zde](https://github.com/OpenGeoLabs/qgi
 
 Pro připomínky, nápady a hlášení chyb můžete napsat email nebo použít [issues projektu na GitHub ](https://github.com/OpenGeoLabs/qgis-ndop-downloader/issues).
 
-## Nástroj příkazové řádky ndop
+## Python balíček - ndop-downloader
 
-Pro dávkové zpracování lze využít Python nástroj příkazové řádky **ndop**
+Po nainstalování balíčku ndop-downloader lze pro stahování dat využít
+nástroj příkazové řádky **ndop**, nebo lze baláček naimportovat do
+python skriptu (`import ndop`)
 
-    python3 bin/ndop -h
+    pip install ndop-downloader
     
-    python3 bin/ndop --taxon "lynx lynx"
+    ndop --taxon "mantis religiosa"
 
 
 ...
