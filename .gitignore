@@ -1,5 +1,6 @@
 __pycache__
 .ndop.cfg
 dist
+ndop_downloader.egg-info
 build
 downloaded_data/data_*

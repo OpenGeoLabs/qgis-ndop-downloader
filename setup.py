@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Copyright (C) 2018 Oto Kaláb
+Copyright (C) 2019 Oto Kaláb
 Contact: oto.kalab@opengeolabs.cz
 """
 
@@ -17,9 +17,9 @@ setup(name='ndop-downloader',
         maintainer_email='oto.kalab@opengeolabs.cz',
         url='https://github.com/OpenGeoLabs/qgis-ndop-downloader',
         description='NDOP Downloader is an application for downloading of records of occurence from official database of the Nature Conservation Agency of the Czech Republic (Nálezová databáze Agentury ochrany přírody a krajiny ČR - NDOP - AOPK).',
-        version="0.1.0",
+        version="0.1.1",
         packages=["ndop"],
-        long_description=open('README.md').read(),
+        long_description=open('README.rst').read(),
         scripts=["bin/ndop"],
         license="GNU/GPL3",
         classifiers=[
@@ -33,6 +33,6 @@ setup(name='ndop-downloader',
         ],
 
         install_requires=install_requirements,
-        keywords=['GIS', 'AOPK', 'Nálezová databáze', 'Species occurences,'
-                  'NDOP', 'The Czech republic']
+        keywords=['GIS', 'AOPK', 'ecology', 'species occurences',
+                  'NDOP', 'Czech Republic', 'nálezová databáze']
 )
