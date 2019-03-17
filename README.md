@@ -58,11 +58,12 @@ a pro rychlé spuštění se objeví ikonka v liště.
 
 Zadejte přihlašovací údaje pro informačním systém AOPK (ISOP). Pokud
 zaškrtnete položku `Uložit přihlašovací údaje`, údaje se uloží do
-konfiguračního souboru a při dalším použití budou předvyplněny. V opačném
-případě budou údaje uložené pouze v rámci běžící instance QGIS, při dalším
-spuštění QGIS je bude potřeba zadat znovu.
+konfiguračního souboru `.ndop.cfg` v domovském adresáři, a při dalším
+použití budou předvyplněny. V opačném případě budou údaje uložené pouze
+v rámci běžící instance QGIS, při dalším spuštění QGIS je bude potřeba
+zadat znovu.
 
-    obrázek předvyplněých údajů
+![](static/images/login.png)
 
 #### Taxon
 
@@ -130,13 +131,28 @@ Pro připomínky, nápady a hlášení chyb můžete napsat email nebo použít 
 
 ## Python balíček - ndop-downloader
 
-Po nainstalování balíčku ndop-downloader lze pro stahování dat využít
-nástroj příkazové řádky **ndop**, nebo lze baláček naimportovat do
-python skriptu (`import ndop`)
+Pro stahování dat lze využít nástroj příkazové řádky **ndop** ve složce
+`bin/ndop`. Tento nástroj má více možností filtrů (viz nápověda modulu),
+a mimo jiné umožňuje stahování na základě polygonové vrstvy
+(vezme první polygon). Lze jej spustit z adresáře QGIS pluginu:
 
+    python3 bin/ndop --taxon "mantis religiosa"
+
+Nebo lze samostatně stáhnout celý Python balíček:
+ 
     pip install ndop-downloader
-    
+
+Poté můžeme rovnou spustit:
+
     ndop --taxon "mantis religiosa"
+
+Nebo naimportovat do vlastního skriptu pomocí:
+
+```python
+import ndop
+```
+
+Nápověda:
 
     ndop -h
 
