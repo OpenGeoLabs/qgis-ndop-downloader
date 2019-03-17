@@ -195,7 +195,7 @@ class NDOPDownloader:
         plugin_path = Path(os.path.dirname(os.path.realpath(__file__)))
         try:
             username, password = ndop.read_config(Path(
-                                                  plugin_path,
+                                                  Path.home(),
                                                  '.ndop.cfg'
                                                 )
             )
@@ -251,7 +251,7 @@ class NDOPDownloader:
         if result:
             try:
                 username, password = ndop.read_config(Path(
-                                                      plugin_path,
+                                                      Path.home(),
                                                      '.ndop.cfg'
                                                     )
                 )
@@ -262,7 +262,7 @@ class NDOPDownloader:
                     import configparser
                     config = configparser.ConfigParser()
                     config['login'] = {'username': username,'password': password}
-                    with open(Path(plugin_path,'.ndop.cfg'), 'w') as configfile:
+                    with open(Path(Path.home(),'.ndop.cfg'), 'w') as configfile:
                         config.write(configfile)
 
             taxon = self.dlg.combo_taxon.currentText()
