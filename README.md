@@ -46,7 +46,7 @@ Vyhledáme `NDOP Downloader`, a nainstalujeme pomocí tlačítka
 
     screenshot
 
-Po instalaci se přidá do menu `Zásuvné moduly` položka `NDOP Downloader`
+Po instalaci se přidá do menu `Web` položka `NDOP Downloader`
 a pro rychlé spuštění se objeví ikonka v liště.
 
 ### Popis rozhraní

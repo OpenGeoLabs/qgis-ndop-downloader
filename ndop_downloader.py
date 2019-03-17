@@ -160,7 +160,7 @@ class NDOPDownloader:
             self.toolbar.addAction(action)
 
         if add_to_menu:
-            self.iface.addPluginToMenu(
+            self.iface.addPluginToWebMenu(
                 self.menu,
                 action)
 
@@ -182,7 +182,7 @@ class NDOPDownloader:
     def unload(self):
         """Removes the plugin menu item and icon from QGIS GUI."""
         for action in self.actions:
-            self.iface.removePluginMenu(
+            self.iface.removePluginWebMenu(
                 self.tr(u'&NDOP Downloader'),
                 action)
             self.iface.removeToolBarIcon(action)
