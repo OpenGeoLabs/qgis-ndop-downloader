@@ -163,7 +163,7 @@ Poté můžeme rovnou spustit:
 
     ndop --taxon "mantis religiosa"
 
-Nebo naimportovat do vlastního skriptu pomocí:
+Nebo naimportovat modul do vlastního skriptu pomocí:
 
 ```python
 import ndop
@@ -211,11 +211,11 @@ Nápověda:
 [GNU General Public License v3.0](https://github.com/OpenGeoLabs/qgis-ndop-downloader/blob/master/LICENSE)
 ## Reference
 
-Kaláb. O. (2019): QGIS NDOP Downloader, OpenGeoLabs
+Kaláb. O. (2019): NDOP Downloader - QGIS a Python modul, OpenGeoLabs
 
     @manual{,
       author   = {Oto Kaláb},
-      title    = {QGIS NDOP Downloader},
+      title    = {NDOP Downloader- QGIS a Python modul},
       year     = {2019},
       organization = {OpenGeoLabs},
       url      = {https://github.com/OpenGeoLabs/qgis-ndop-downloader},
