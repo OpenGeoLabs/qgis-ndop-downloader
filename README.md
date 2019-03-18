@@ -18,7 +18,7 @@ systému AOPK (ISOP).
 
 - snadný přístup k datům přímo z QGIS nebo Python
 - automatická kompletace tabulkových dat ke všem vyhledaným záznamům
-- možnost filtrování na základě polygonu z vrstvy (zatím pouze u Python balíčku)
+- možnost filtrování na základě polygonu z vrstvy (zatím pouze u Python modulu)
     - zadaná oblast je bez limitu 25 km<sup>2</sup> 
 
 ### Nevýhoda:
@@ -222,3 +222,4 @@ Kaláb. O. (2019): QGIS NDOP Downloader, OpenGeoLabs
       keywords = {QGIS, Python, ecology, AOPK, species occurrence},
     }
 
+Pro citaci použitých dat postupujte podle [Citačních pravidlel ND](https://portal.nature.cz/publik_syst/ctihtmlpage.php?what=4910&X=X)
