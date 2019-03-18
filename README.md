@@ -14,6 +14,17 @@ se dat naleznete na stránkách
 [vytvořit účet](https://idm.nature.cz/idm/#/registration)** v informačním
 systému AOPK (ISOP).
 
+### Hlavní výhody oproti webovému filtru:
+
+- snadný přístup k datům přímo z QGIS nebo Python
+- automatická kompletace tabulkových dat ke všem vyhledaným záznamům
+- možnost filtrování na základě polygonu z vrstvy (zatím pouze u Python balíčku)
+    - zadaná oblast je bez limitu 25 km<sup>2</sup> 
+
+### Nevýhoda:
+
+- omezené možnosti filtru (zatím)
+
 
 ## QGIS Plugin - NDOP Downloader
 Zásuvný modul slouží ke stahování dat z nálezové databáze AOPK. V
@@ -49,6 +60,13 @@ Vyhledáme `NDOP Downloader`, a nainstalujeme pomocí tlačítka
 Po instalaci se přidá do menu `Web` položka `NDOP Downloader`
 a pro rychlé spuštění se objeví ikonka v liště.
 
+#### Instalace vývojové verze
+
+Zájemci si mohou stáhnout i [vývojovou verzi](https://github.com/OpenGeoLabs/qgis-ndop-downloader/archive/master.zip), a
+nainstalovat pomocí záložky `Instalovat ze ZIPu` v okně `Zásuvné moduly`. Tato verze
+obsahuje nejčerstvější opravy a funkce, ale je může obsahovat chyby, vnesené v
+v průběhu dalšího vývoje.
+
 ### Popis rozhraní
 
 ![](static/images/dialog.png)
@@ -82,7 +100,6 @@ prázdné políčko taxonu, získáme data všech taxonů ve vybraném regionu.
 
 #### Výstupní složka
 
-
 Vybereme výsupní složku kam se nám data uloží. Pokud ponecháme prázdné,
 stáhnou se data do složky dočasných souborů. V případě, že nechceme
 stahovat tabulková data zaškrtneme možnost `Nestahovat tabulková data`.
@@ -105,7 +122,7 @@ filtrujeme pouze podle regionu bude název odvozen od názvu regionu.
 
 Po potvrzení tlačítkem `Ok` se okno zavře a spustí se filtrace a
 stahování. QGIS během stahování **nelze v současné době používat**.
-Stejně jako při použití oficiální webové aplikace, stahování může trvat
+Stejně jako při použití oficiálního webové filtru, stahování může trvat
 několik minut, v závislosti na počtu záznamů, stažení tabulkových dat atd.
 
 ![](static/images/message.png)
@@ -140,7 +157,7 @@ a mimo jiné umožňuje stahování na základě polygonové vrstvy
 
 Nebo lze samostatně stáhnout celý Python balíček:
  
-    pip install ndop-downloader
+    pip3 install ndop-downloader
 
 Poté můžeme rovnou spustit:
 
@@ -189,8 +206,19 @@ Nápověda:
       --d_source D_SOURCE   specific, more detailed source of data
       --config CONFIG       path to the config file with login and password.
 
-...
 ## Licence
-...
+
+[GNU General Public License v3.0](https://github.com/OpenGeoLabs/qgis-ndop-downloader/blob/master/LICENSE)
 ## Reference
-...
+
+Kaláb. O. (2019): QGIS NDOP Downloader, OpenGeoLabs
+
+    @manual{,
+      author   = {Oto Kaláb},
+      title    = {QGIS NDOP Downloader},
+      year     = {2019},
+      organization = {OpenGeoLabs},
+      url      = {https://github.com/OpenGeoLabs/qgis-ndop-downloader},
+      keywords = {QGIS, Python, ecology, AOPK, species occurrence},
+    }
+
