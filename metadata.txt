@@ -37,7 +37,7 @@ repository=https://github.com/OpenGeoLabs/qgis-ndop-downloader
 # changelog=
 
 # Tags are comma separated with spaces allowed
-tags=ecology, species, occurrence, download
+tags= species occurrence, download, ecology
 
 homepage=https://opengeolabs.github.io/qgis-ndop-downloader/
 # category=Download
