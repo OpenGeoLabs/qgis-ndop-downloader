@@ -14,12 +14,16 @@ version=0.1.0
 author=Oto Kaláb
 email=oto.kalab@opengeolabs.cz
 
-about=NDOP Downloader slouží ke stahování dat z <a href="https://portal.nature.cz/nd/">Nálezové databáze AOPK</a>.
-    Výstupem jsou dostupná data lokalizací (.shp komprimované v .zip) a
-    tabulková data (.csv) pro všechny záznamy. Lokalizace se po ukončení
-    stahování nahrají do projektu. Tabulková data se nahrají do projektu
-    jako Oddělený text a zobrazí se jako body (na základě souřadnic v
-    tabulce). Tato data obsahují body a centroidy většiny polygonů a linií.
+about=NDOP Downloader slouží ke stahování dat z <a href="https://portal.nature.cz/nd/">Nálezové databáze AOPK</a>
+    , na základě zadaných parametrů. Výstupem jsou dostupná data lokalizací
+    (.shp komprimované v .zip) a tabulková data (.csv) pro všechny nalezené
+    záznamy. Lokalizace se po ukončení stahování nahrají do projektu. Tabulková
+    data se nahrají do projektu jako Oddělený text a zobrazí se jako body (na
+    základě souřadnic v tabulce). Tato data obsahují body a centroidy většiny
+    polygonů a linií.
+
+    NDOP Downloader pouze zprostředkovává přístup k datům. Veškeré informace
+    o datech naleznete na stránkách <a href="https://portal.nature.cz/nd/">Nálezové databáze AOPK</a>.
 
     Pro použití je nutné <a href="https://idm.nature.cz/idm/#/registration">vytvořit účet</a> v informačním systému AOPK - ISOP.
     
