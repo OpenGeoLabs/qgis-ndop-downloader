@@ -1,0 +1,10 @@
+.attributes export-ignore
+.gitignore export-ignore
+static export-ignore
+README.rst export-ignore
+release-howto.md export-ignore
+setup.py export-ignore
+requirements.txt export-ignore
+MANIFEST.in export-ignore
+test export-ignore
+scripts export-ignore
