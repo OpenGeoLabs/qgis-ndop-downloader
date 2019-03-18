@@ -1,4 +1,4 @@
-.attributes export-ignore
+.gitattributes export-ignore
 .gitignore export-ignore
 static export-ignore
 README.rst export-ignore
