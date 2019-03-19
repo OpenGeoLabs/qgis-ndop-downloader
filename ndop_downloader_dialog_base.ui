@@ -44,9 +44,9 @@
    <widget class="QLineEdit" name="line_user">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>80</x>
       <y>30</y>
-      <width>221</width>
+      <width>271</width>
       <height>29</height>
      </rect>
     </property>
@@ -54,9 +54,9 @@
    <widget class="QLineEdit" name="line_pass">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>80</x>
       <y>70</y>
-      <width>221</width>
+      <width>271</width>
       <height>29</height>
      </rect>
     </property>
@@ -70,7 +70,7 @@
       <x>10</x>
       <y>30</y>
       <width>121</width>
-      <height>17</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
@@ -81,9 +81,9 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>70</y>
+      <y>60</y>
       <width>121</width>
-      <height>17</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
@@ -145,7 +145,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>50</y>
+      <y>60</y>
       <width>331</width>
       <height>25</height>
      </rect>
@@ -177,7 +177,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>40</y>
+      <y>30</y>
       <width>121</width>
       <height>17</height>
      </rect>
