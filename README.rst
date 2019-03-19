@@ -16,7 +16,7 @@ information system.
 Download data (.csv, .shp) from NDOP based on input parametres. Unlike
 the offical web filter, its possible to input polygon layer (EPSG:5514)
 for search in area and amount of results is not limited. Login can be
-stored in configuration file ".ndop.cfg".
+stored in configuration file `.ndop.cfg`.
 
 This package is a part of NDOP Downloader QGIS plugin. Whole project is
 maintained on `GitHub <https://github.com/OpenGeoLabs/qgis-ndop-downloader>`_
