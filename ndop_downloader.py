@@ -260,11 +260,11 @@ class NDOPDownloader:
                 password = self.dlg.line_pass.text()
                 if self.dlg.pass_check.isChecked():
                     import configparser
-                    config = configparser.ConfigParser()
-                    config['login'] = {'username': username,'password': password}
-                    with open(Path(Path.home(),'.ndop.cfg'), 'w') as configfile:
-                        config.write(configfile)
-                    # ndop.store_config(username, password)
+                    # config = configparser.ConfigParser()
+                    # config['login'] = {'username': username,'password': password}
+                    # with open(Path(Path.home(),'.ndop.cfg'), 'w') as configfile:
+                        # config.write(configfile)
+                    ndop.store_config(username, password)
 
             taxon = self.dlg.combo_taxon.currentText()
             region = self.dlg.combo_region.currentText()

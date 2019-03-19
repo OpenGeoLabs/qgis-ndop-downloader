@@ -7,15 +7,8 @@ from pathlib import Path
 
 sys.path.append(str(Path(__file__).parent.parent))
 
-# from ndop import get_ndop_data, get_search_pars, read_config, store_config
-from ndop import get_ndop_data, get_search_pars, read_config
-
-def store_config(username, password):
-    import configparser
-    config = configparser.ConfigParser()
-    config['login'] = {'username': username,'password': password}
-    with open(Path(Path.home(),'.ndop.cfg'), 'w') as configfile:
-        config.write(configfile)
+from ndop import get_ndop_data, get_search_pars, read_config, store_config
+# from ndop import get_ndop_data, get_search_pars, read_config
 
 def args_parser():
     """

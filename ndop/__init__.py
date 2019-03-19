@@ -15,6 +15,9 @@ LOCATIONS_URL = 'https://portal.nature.cz/nd/export_lokalizaci.php'
 class NBException(Exception):
     pass
 
+def test():
+    pass
+
 def fail(message):
     """fail program for some reason. 
     
@@ -57,11 +60,11 @@ def read_config(path):
     
     return (username, password)
 
-# def store_config(username, password):
-    # config = configparser.ConfigParser()
-    # config['login'] = {'username': username,'password': password}
-    # with open(Path(Path.home(),'.ndop.cfg'), 'w') as configfile:
-        # config.write(configfile)
+def store_config(username, password):
+    config = configparser.ConfigParser()
+    config['login'] = {'username': username,'password': password}
+    with open(Path(Path.home(),'.ndop.cfg'), 'w') as configfile:
+        config.write(configfile)
 
 def get_search_pars(
         author='', taxon='', region=None, polygon=None, date_to='',
