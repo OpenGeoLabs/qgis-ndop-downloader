@@ -42,7 +42,7 @@ pb_tool zip
 5. upload `.zip` to ogl repo
     
 6. changelog
-7. create tag on git
+7. create tag on git add zip from `pb_tool`
 
 # ndop `__init__.py`, `bin/ndop`
 
