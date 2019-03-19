@@ -64,8 +64,8 @@ a pro rychlé spuštění se objeví ikonka v liště.
 
 Zájemci si mohou stáhnout i [vývojovou verzi](https://github.com/OpenGeoLabs/qgis-ndop-downloader/archive/master.zip), a
 nainstalovat pomocí záložky `Instalovat ze ZIPu` v okně `Zásuvné moduly`. Tato verze
-obsahuje nejčerstvější opravy a funkce, ale je může obsahovat chyby, vnesené v
-v průběhu dalšího vývoje.
+obsahuje nejčerstvější opravy a funkce, ale může obsahovat chyby, vnesené v
+průběhu dalšího vývoje.
 
 ### Popis rozhraní
 
