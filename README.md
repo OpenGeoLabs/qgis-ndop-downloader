@@ -155,7 +155,7 @@ a mimo jiné umožňuje stahování na základě polygonové vrstvy
 
     python3 bin/ndop --taxon "mantis religiosa"
 
-Python balíček lze také stánout zcela samostatně:
+Python balíček lze také stánout zcela samostatně z [PyPi](https://pypi.org/project/ndop-downloader/):
  
     pip3 install ndop-downloader
 
