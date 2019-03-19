@@ -67,7 +67,7 @@ details
 3. Check, if something is needed to be adjusted in `MANIFEST.in`
 4. Check `setup.py`, fix the version and possibly packages
 
-5.changelog
+5. changelog
 
 ### Make package distribution
 
