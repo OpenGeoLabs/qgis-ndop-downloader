@@ -29,8 +29,8 @@ two different release packages:
     - 1 - database in current state; 2 - refactoring when AOPK change database dramatically (migrate, API, etc.)
 
 
-
-# QGIS NDOP Downloader (todo)
+# QGIS NDOP Downloader
+>todo
 
 1. fix `metadata.txt` - new version etc.
 2. fix repo `.xml` - new version etc. (port from `metadata.txt`)
