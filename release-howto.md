@@ -2,7 +2,7 @@
 
 two different release packages:
 
-- QGIS NDOP Downloader `ndop_downloader.py`- OpenGeoLabs QGIS plugins repo
+- QGIS NDOP Downloader - OpenGeoLabs QGIS plugins repo
 - ndop `__init__.py`, `bin/ndop` - PyPi
 
 ## Releases numbering x.x.x
