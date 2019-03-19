@@ -15,9 +15,6 @@ LOCATIONS_URL = 'https://portal.nature.cz/nd/export_lokalizaci.php'
 class NBException(Exception):
     pass
 
-def test():
-    pass
-
 def fail(message):
     """fail program for some reason. 
     
