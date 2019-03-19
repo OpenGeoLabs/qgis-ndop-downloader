@@ -326,9 +326,3 @@ def get_ndop_shp_data(s,output_name):
             urllib.request.urlretrieve(i, filename)
             print("SHP downloaded: " + filename)
     print("Done")
-
-def get_ndop_data(username, password, search_payload, output_name):
-    s = login(username, password)
-    table_payload, num_rec = search_filter(s,search_payload)
-    get_ndop_csv_data(s,num_rec,table_payload,output_name)
-    get_ndop_shp_data(s,output_name)
