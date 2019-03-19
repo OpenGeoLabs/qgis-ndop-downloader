@@ -151,11 +151,11 @@ Pro připomínky, nápady a hlášení chyb můžete napsat email nebo použít 
 Pro stahování dat lze využít nástroj příkazové řádky **ndop** ve složce
 `bin/ndop`. Tento nástroj má více možností filtrů (viz nápověda modulu),
 a mimo jiné umožňuje stahování na základě polygonové vrstvy
-(vezme první polygon). Lze jej spustit z adresáře QGIS pluginu:
+(vezme první polygon z vrstvy). Lze jej spustit z adresáře QGIS pluginu:
 
     python3 bin/ndop --taxon "mantis religiosa"
 
-Nebo lze samostatně stáhnout celý Python balíček:
+Python balíček lze také stánout zcela samostatně:
  
     pip3 install ndop-downloader
 
