@@ -264,6 +264,7 @@ class NDOPDownloader:
                     config['login'] = {'username': username,'password': password}
                     with open(Path(Path.home(),'.ndop.cfg'), 'w') as configfile:
                         config.write(configfile)
+                    # ndop.store_config(username, password)
 
             taxon = self.dlg.combo_taxon.currentText()
             region = self.dlg.combo_region.currentText()

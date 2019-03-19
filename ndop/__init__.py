@@ -1,5 +1,6 @@
 import requests
 import configparser
+from pathlib import Path
 import re
 import urllib
 import json
@@ -55,6 +56,12 @@ def read_config(path):
     password = config.get('login', 'password')
     
     return (username, password)
+
+# def store_config(username, password):
+    # config = configparser.ConfigParser()
+    # config['login'] = {'username': username,'password': password}
+    # with open(Path(Path.home(),'.ndop.cfg'), 'w') as configfile:
+        # config.write(configfile)
 
 def get_search_pars(
         author='', taxon='', region=None, polygon=None, date_to='',
