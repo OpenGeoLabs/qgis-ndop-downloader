@@ -232,18 +232,19 @@ class NDOPDownloader:
         # See if OK was pressed
 
         if result:
-            try:
-                username = self.dlg.line_user.text()
-                password = self.dlg.line_pass.text()
-            except:
+
+            username = self.dlg.line_user.text()
+            password = self.dlg.line_pass.text()
+
+            if not username or not password:
                 username, password = ndop.read_config(Path(
                                                       Path.home(),
                                                      '.ndop.cfg'
                                                     )
                 )
-
-            if self.dlg.pass_check.isChecked():
-                ndop.store_config(username, password)
+            else:
+                if self.dlg.pass_check.isChecked():
+                    ndop.store_config(username, password)
 
             taxon = self.dlg.combo_taxon.currentText()
             region = self.dlg.combo_region.currentText()
