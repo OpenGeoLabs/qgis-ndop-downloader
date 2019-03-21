@@ -10,7 +10,7 @@
 name=NDOP Downloader
 qgisMinimumVersion=3.0
 description=NDOP Downloader slouží ke stahování dat z Nálezové databáze AOPK.
-version=0.1.0
+version=0.1.0-beta
 author=Oto Kaláb
 email=oto.kalab@opengeolabs.cz
 
