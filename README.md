@@ -25,6 +25,22 @@ systému AOPK (ISOP).
 
 - omezené možnosti filtru u QGIS zásuvného modulu (zatím)
 
+# Obsah
+
+[QGIS Plugin - NDOP Downloader](https://github.com/OpenGeoLabs/qgis-ndop-downloader#QGIS-Plugin---NDOP-Downloader)
+- [Instalace a Spouštění](https://github.com/OpenGeoLabs/qgis-ndop-downloader#Instalace-a-Spousteni)  
+- [Popis rozhraní](https://github.com/OpenGeoLabs/qgis-ndop-downloader#Popis-rozhrani)  
+- [Průběh stahování](https://github.com/OpenGeoLabs/qgis-ndop-downloader#Prubeh-stahovani)  
+- [Plánované funkce - zpětná vazba](https://github.com/OpenGeoLabs/qgis-ndop-downloader#planovane-funkce---zpetna-vazba) 
+
+[Python balíček - ndop-downloader](https://github.com/OpenGeoLabs/qgis-ndop-downloader#Python-balicek---NDOP-Downloader)
+- [Python balíček lze také stánout zcela samostatně z [PyPi]](https://github.com/OpenGeoLabs/qgis-ndop-downloader#python-bal%C3%AD%C4%8Dek-lze-tak%C3%A9-st%C3%A1nout-zcela-samostatn%C4%9B-z-pypi)
+
+[Licence](https://github.com/OpenGeoLabs/qgis-ndop-downloader#licence)
+
+[Reference](https://github.com/OpenGeoLabs/qgis-ndop-downloader#reference)
+
+
 ## QGIS Plugin - NDOP Downloader
 Zásuvný modul slouží ke stahování dat z nálezové databáze AOPK. V
 současné verzi je možné filtrovat na základě taxonu (druh,popř. rod)
