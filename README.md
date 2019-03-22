@@ -23,8 +23,7 @@ systému AOPK (ISOP).
 
 ### Nevýhoda:
 
-- omezené možnosti filtru (zatím)
-
+- omezené možnosti filtru u QGIS zásuvného modulu (zatím)
 
 ## QGIS Plugin - NDOP Downloader
 Zásuvný modul slouží ke stahování dat z nálezové databáze AOPK. V
@@ -46,16 +45,16 @@ moduly pomocí menu `Zásuvné moduly --> Spravovat a instalovat zásuvné modul
 Je ale nutné přidat externí repozitář OpneGeoLabs. V záložce nastavení klikneme
 na tlačítko `Přidat...` a zadáme adresu:
 
-    adresa k repozitáři
-
-    screenshot
+    http://opengeolabs.cz/qgis_plugins.xml
+    
+![](static/images/install.png)
 
 Aktualizujeme seznam modulů tlačítkem `Reload repository`. Nyní už uvidíme
 zásuvný modul mezi ostatními v záložce `Nenainstalované` (nebo `Vše`.
 Vyhledáme `NDOP Downloader`, a nainstalujeme pomocí tlačítka
 `Instalvoat zásuvný modul`
 
-    screenshot
+![](static/images/plugin_list.png)
 
 Po instalaci se přidá do menu `Web` položka `NDOP Downloader`
 a pro rychlé spuštění se objeví ikonka v liště.
@@ -148,14 +147,24 @@ Pro připomínky, nápady a hlášení chyb můžete napsat email nebo použít 
 
 ## Python balíček - ndop-downloader
 
-Pro stahování dat lze využít nástroj příkazové řádky **ndop** ve složce
-`bin/ndop`. Tento nástroj má více možností filtrů (viz nápověda modulu),
-a mimo jiné umožňuje stahování na základě polygonové vrstvy
-(vezme první polygon z vrstvy). Lze jej spustit z adresáře QGIS pluginu:
+Pro stahování dat lze využít nástroj příkazové řádky **ndop** , který
+se nainstaluje se zásuvným modulem do složky `bin/ndop`. Tento nástroj
+má více možností filtrů (viz nápověda modulu), a mimo jiné umožňuje
+stahování na základě polygonové vrstvy (vezme první polygon z vrstvy).
+Přihlašovací údaje lze zadat přímo do příkazu  (`--user`, `--password`),
+nebo je načíst z konfiguračního souboru `.ndop.cfg` v domovském adresáři.
+Konfigurační soubor lze nechat vygenerovat použitím argumentu `-s`.
+Nástroj lze spustit z adresáře QGIS pluginu:
+
+nápověda:
+
+    python3 bin/ndop -h
+
+použití:
 
     python3 bin/ndop --taxon "mantis religiosa"
 
-Python balíček lze také stánout zcela samostatně z [PyPi](https://pypi.org/project/ndop-downloader/):
+### Python balíček lze také stánout zcela samostatně z [PyPi](https://pypi.org/project/ndop-downloader/):
  
     pip3 install ndop-downloader
 
@@ -173,8 +182,8 @@ Nápověda:
 
     ndop -h
 
-    usage: ndop [-h] [--user USER] [--password PASSWORD] [--output OUTPUT]
-                [--taxon TAXON] [--region REGION] [--polygon POLYGON]
+    usage: ndop [-h] [--user USER] [--password PASSWORD] [-s] [--output OUTPUT]
+                [-loc_only] [--taxon TAXON] [--region REGION] [--polygon POLYGON]
                 [--month_from MONTH_FROM] [--month_to MONTH_TO]
                 [--date_from DATE_FROM] [--date_to DATE_TO] [--author AUTHOR]
                 [--project PROJECT] [--source SOURCE] [--d_source D_SOURCE]
@@ -189,7 +198,10 @@ Nápověda:
       -h, --help            show this help message and exit
       --user USER           login (user name or email)
       --password PASSWORD   ISOP password
+      -s                    store login and password in "/home/ok/.ndop.cfg"
       --output OUTPUT       path with output filenames prefix
+      -loc_only             downloads only spatial data without tables(faster, but
+                            only localisations with id)
       --taxon TAXON         taxon name (i.e. "mantis religiosa")
       --region REGION       region of iterest (i.e. town , protected area)
       --polygon POLYGON     path to poygon layer (EPSG:5514) that define thesearch
@@ -205,6 +217,7 @@ Nápověda:
       --source SOURCE       general source of data (i.e. "ND - Databáze BioLog")
       --d_source D_SOURCE   specific, more detailed source of data
       --config CONFIG       path to the config file with login and password.
+                            Default file path is: "/home/ok/.ndop.cfg"
 
 ## Licence
 
@@ -215,7 +228,7 @@ Kaláb. O. (2019): NDOP Downloader - QGIS a Python modul, OpenGeoLabs
 
     @manual{,
       author   = {Oto Kaláb},
-      title    = {NDOP Downloader- QGIS a Python modul},
+      title    = {NDOP Downloader - QGIS a Python modul},
       year     = {2019},
       organization = {OpenGeoLabs},
       url      = {https://github.com/OpenGeoLabs/qgis-ndop-downloader},
