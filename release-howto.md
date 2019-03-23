@@ -63,7 +63,7 @@ details
 ### Up-to-date configuration files
 
 1. Fix `requirements.txt` file
-2. Update `README.md` file
+2. Update `README.rst` file
 3. Check, if something is needed to be adjusted in `MANIFEST.in`
 4. Check `setup.py`, fix the version and possibly packages
 
