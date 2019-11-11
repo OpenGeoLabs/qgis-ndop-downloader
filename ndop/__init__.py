@@ -275,12 +275,12 @@ def get_ndop_csv_data(s,num_rec,table_payload,output_name):
     counter = 0
     print("Downloading records: ")
 
-    for i in range(1, num_rec, 500):
-        if i + 499 < num_rec:
-            to = i + 499
+    for i in range(0, num_rec, 500):
+        if i + 500 < num_rec:
+            to = i + 500
         else:
             to = num_rec
-        print("{} - {}".format(i, to))
+        print("{} - {}".format(i+1, to))
         if num_rec == i + 500:
             print(num_rec)
         
@@ -297,9 +297,9 @@ def get_ndop_csv_data(s,num_rec,table_payload,output_name):
         f = StringIO(req.text)
         reader = csv.reader(f, delimiter=';')
         if counter == 1: 
-            csv_table.append(list(reader)[1:])
+            csv_table.append(list(reader))
         else:
-            csv_table.append(list(reader)[2:])
+            csv_table.append(list(reader)[1:])
 
     t = sum(csv_table,[])
 
