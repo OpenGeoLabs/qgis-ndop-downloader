@@ -30,19 +30,18 @@ two different release packages:
 
 
 # QGIS NDOP Downloader
->todo
 
-1. fix `metadata.txt` - new version etc.
-2. fix repo `.xml` - new version etc. (port from `metadata.txt`)
-3. make zip
+1. fix `metadata.txt` - new version, changelog etc.
+2. make zip
 ```
 pb_tool zip
-``` 
-4. update `.xml` on ogl repo 
-5. upload `.zip` to ogl repo
-    
-6. changelog
-7. create tag on git add zip from `pb_tool`
+```
+3. update git (`git push`)
+4. create tag on git add zip from `pb_tool`
+
+5. update repo `.xml` - new version etc. (port from `metadata.txt`)
+6. upload `.zip` to ogl repo
+
 
 # ndop `__init__.py`, `bin/ndop`
 
@@ -63,11 +62,9 @@ details
 ### Up-to-date configuration files
 
 1. Fix `requirements.txt` file
-2. Update `README.rst` file
+2. Update `README.rst` file (changelog)
 3. Check, if something is needed to be adjusted in `MANIFEST.in`
 4. Check `setup.py`, fix the version and possibly packages
-
-5. changelog
 
 ### Make package distribution
 
