@@ -20,3 +20,7 @@ stored in configuration file `.ndop.cfg`.
 
 This package is a part of NDOP Downloader QGIS plugin. Whole project is
 maintained on `GitHub <https://github.com/OpenGeoLabs/qgis-ndop-downloader>`_
+
+Changelog
+---------
+0.1.8 - fixed bug: header and first line missing in table download (issue #33)
