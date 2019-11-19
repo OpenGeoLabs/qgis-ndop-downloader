@@ -25,22 +25,6 @@ systému AOPK (ISOP).
 
 - omezené možnosti filtru u QGIS zásuvného modulu (zatím)
 
-# Obsah
-
-[QGIS Plugin - NDOP Downloader](https://github.com/OpenGeoLabs/qgis-ndop-downloader#QGIS-Plugin---NDOP-Downloader)
-- [Instalace a Spouštění](https://github.com/OpenGeoLabs/qgis-ndop-downloader#Instalace-a-Spousteni)  
-- [Popis rozhraní](https://github.com/OpenGeoLabs/qgis-ndop-downloader#Popis-rozhrani)  
-- [Průběh stahování](https://github.com/OpenGeoLabs/qgis-ndop-downloader#Prubeh-stahovani)  
-- [Plánované funkce - zpětná vazba](https://github.com/OpenGeoLabs/qgis-ndop-downloader#planovane-funkce---zpetna-vazba) 
-
-[Python balíček - ndop-downloader](https://github.com/OpenGeoLabs/qgis-ndop-downloader#Python-balicek---NDOP-Downloader)
-- [Python balíček lze také stánout zcela samostatně z [PyPi]](https://github.com/OpenGeoLabs/qgis-ndop-downloader#python-bal%C3%AD%C4%8Dek-lze-tak%C3%A9-st%C3%A1nout-zcela-samostatn%C4%9B-z-pypi)
-
-[Licence](https://github.com/OpenGeoLabs/qgis-ndop-downloader#licence)
-
-[Reference](https://github.com/OpenGeoLabs/qgis-ndop-downloader#reference)
-
-
 ## QGIS Plugin - NDOP Downloader
 Zásuvný modul slouží ke stahování dat z nálezové databáze AOPK. V
 současné verzi je možné filtrovat na základě taxonu (druh,popř. rod)
@@ -58,17 +42,16 @@ tabulce). Tato data obsahují body a centroidy většiny polygonů a linií.
 
 Zásuvný modul předpokládá verzi LTR QGIS 3.4. Instaluje se jako ostatní
 moduly pomocí menu `Zásuvné moduly --> Spravovat a instalovat zásuvné moduly`.
-Je ale nutné přidat externí repozitář OpneGeoLabs. V záložce nastavení klikneme
-na tlačítko `Přidat...` a zadáme adresu:
+Je ale nutné povolit experimentální zásuvné moduly. V záložce nastavení zaškrtneme
+políčko `Zobrazit také experimentální zásuvné moduly`.
 
     http://opengeolabs.cz/qgis_plugins.xml
     
 ![](static/images/install.png)
 
-Aktualizujeme seznam modulů tlačítkem `Reload repository`. Nyní už uvidíme
-zásuvný modul mezi ostatními v záložce `Nenainstalované` (nebo `Vše`.
-Vyhledáme `NDOP Downloader`, a nainstalujeme pomocí tlačítka
-`Instalvoat zásuvný modul`
+Nyní už uvidíme zásuvný modul mezi ostatními v záložce `Nenainstalované` 
+(nebo `Vše`.Vyhledáme `NDOP Downloader`, a nainstalujeme pomocí tlačítka
+`Instalvoat zásuvný modul`.
 
 ![](static/images/plugin_list.png)
 
@@ -90,8 +73,8 @@ průběhu dalšího vývoje.
 #### Přihlášení
 
 Zadejte přihlašovací údaje pro informačním systém AOPK (ISOP). Pokud
-zaškrtnete položku `Uložit přihlašovací údaje`, údaje se uloží do
-konfiguračního souboru `.ndop.cfg` v domovském adresáři, a při dalším
+zaškrtnete položku `Uložit přihlašovací údaje`, **údaje se uloží do
+konfiguračního souboru `.ndop.cfg` v domovském adresáři**, a při dalším
 použití budou předvyplněny. V opačném případě budou údaje uložené pouze
 v rámci běžící instance QGIS, při dalším spuštění QGIS je bude potřeba
 zadat znovu.
