@@ -1,4 +1,4 @@
-# NDOP Downloader <img src="https://github.com/OpenGeoLabs/qgis-ndop-downloader/blob/master/icon.png" width="32"> 
+# NDOP Downloader <img src="https://raw.githubusercontent.com/OpenGeoLabs/qgis-ndop-downloader/master/icon.pngg" width="32"> 
 
 NDOP Downloader je aplikace, která slouží ke stahování nálezů z
 [Nálezové databáze ochrany přírody AOPK ČR](https://cs.wikipedia.org/wiki/N%C3%A1lezov%C3%A1_datab%C3%A1ze_ochrany_p%C5%99%C3%ADrody).
