@@ -9,23 +9,19 @@
 [general]
 name=NDOP Downloader
 qgisMinimumVersion=3.0
-description=NDOP Downloader slouží ke stahování dat z Nálezové databáze AOPK.
+description=Stažení a import dat o výskytu druhů z NDOP AOPK. <br><br> Download and import species occurence data from SOD NCA.
 version=0.1.1-beta
 author=Oto Kaláb
 email=oto.kalab@opengeolabs.cz
 
-about=NDOP Downloader slouží ke stahování dat z <a href="https://portal.nature.cz/nd/">Nálezové databáze AOPK</a> 
-    na základě zadaných parametrů. Výstupem jsou dostupná data lokalizací
-    (.shp komprimované v .zip) a tabulková data (.csv) pro všechny nalezené
-    záznamy. Lokalizace se po ukončení stahování nahrají do projektu. Tabulková
-    data se nahrají do projektu jako Oddělený text a zobrazí se jako body (na
-    základě souřadnic v tabulce). Tato data obsahují body a centroidy většiny
-    polygonů a linií.
+about=
+    NDOP Downloader allows download species occurence data from <a href="https://portal.nature.cz/nd/">The Species Occurrence Database NCA CR</a> (Nature Conservation Agency of the Czech Republic). Localisation (.shp compressed in .zip) and table data (.csv) will be downloaded for found records. Table data will be imported as point layer according the columns with coordinates.
+    
+    For using a databse is necessary <a href="https://idm.nature.cz/idm/#/registration">create account</a> (free) in NCA information system.
 
-    NDOP Downloader pouze zprostředkovává přístup k datům. Veškeré informace
-    o datech naleznete na stránkách <a href="https://portal.nature.cz/nd/">Nálezové databáze AOPK</a>.
+    NDOP Downloader slouží ke stahování dat o výskytu druhů z <a href="https://portal.nature.cz/nd/">Nálezové databáze AOPK</a>. Pro všechny nalezené záznamy se stáhnou a importují dostupná data lokalizací (.shp komprimované v .zip) a tabulková data (.csv), ta se na základě uvedených souřadnic zobrazí jako bodová vrstva.
 
-    Pro použití je nutné <a href="https://idm.nature.cz/idm/#/registration">vytvořit účet</a> v informačním systému AOPK - ISOP.
+    Pro použití je nutné <a href="https://idm.nature.cz/idm/#/registration">vytvořit účet</a> (zdarma) v informačním systému AOPK - ISOP.
     
 tracker=https://github.com/OpenGeoLabs/qgis-ndop-downloader/issues
 repository=https://github.com/OpenGeoLabs/qgis-ndop-downloader
@@ -40,7 +36,7 @@ changelog= 0.1.1-beta - fixed table download (issue #33)
 tags= species occurrence, download, ecology
 
 homepage=https://opengeolabs.github.io/qgis-ndop-downloader/
-# category=Download
+category=Web
 icon=icon.png
 # experimental flag
 experimental=True
