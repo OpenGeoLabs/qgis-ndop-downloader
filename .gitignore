@@ -3,3 +3,4 @@ dist
 ndop_downloader.egg-info
 build
 ndop_downloader.zip
+help/build
