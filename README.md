@@ -158,29 +158,7 @@ Nástroj lze spustit z adresáře QGIS pluginu:
 nápověda:
 
     python3 bin/ndop -h
-
-použití:
-
-    python3 bin/ndop --taxon "mantis religiosa"
-
-### Python balíček lze také stánout zcela samostatně z [PyPi](https://pypi.org/project/ndop-downloader/):
- 
-    pip3 install ndop-downloader
-
-Poté můžeme rovnou spustit:
-
-    ndop --taxon "mantis religiosa"
-
-Nebo naimportovat modul do vlastního skriptu pomocí:
-
-```python
-import ndop
-```
-
-Nápověda:
-
-    ndop -h
-
+    
     usage: ndop [-h] [--user USER] [--password PASSWORD] [-s] [--output OUTPUT]
                 [-loc_only] [--taxon TAXON] [--region REGION] [--polygon POLYGON]
                 [--month_from MONTH_FROM] [--month_to MONTH_TO]
@@ -217,6 +195,54 @@ Nápověda:
       --d_source D_SOURCE   specific, more detailed source of data
       --config CONFIG       path to the config file with login and password.
                             Default file path is: "/home/ok/.ndop.cfg"
+
+
+Příklad použití:
+
+    python3 bin/ndop --taxon "mantis religiosa"
+
+### Python balíček lze také stánout zcela samostatně z [PyPi](https://pypi.org/project/ndop-downloader/):
+ 
+    pip3 install ndop-downloader
+
+#### Nástroj příkazové řádky `ndop`
+  
+    ndop -h
+
+Příklad použití:
+
+    ndop --taxon "mantis religiosa"
+
+#### Python modul
+
+```python
+import ndop
+```
+
+Příklad použití:
+
+```python
+import ndop as nd
+
+search_payload = nd.get_search_pars()
+search_payload.update({'rfTaxon':'mantis religiosa'})
+
+# přihlašovací údaje zadáme ručně
+# username = "name"
+# password = "pswd"
+
+# nebo můžeme načíst z konfiguračního souboru
+username, password = nd.read_config("~/.ndop.cfg")
+
+s = nd.login(username, password)
+table_payload,num_rec = nd.search_filter(s,search_payload)
+
+nd.get_ndop_csv_data(s,
+                    num_rec,
+                    table_payload,
+                    "dir"
+                    )
+```
 
 ## Licence
 
