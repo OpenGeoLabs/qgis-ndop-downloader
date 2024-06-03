@@ -8,7 +8,7 @@
                              -------------------
         begin                : 2018-12-14
         copyright            : (C) 2018 by Oto Kaláb
-        email                : oto.kalab@opengeolabs.cz
+        email                : kalab.oto@gmail.com
         git sha              : $Format:%H$
  ***************************************************************************/
 

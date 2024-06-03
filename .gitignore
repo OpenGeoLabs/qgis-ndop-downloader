@@ -2,4 +2,5 @@ __pycache__
 dist
 ndop_downloader.egg-info
 build
+zip_build
 ndop_downloader.zip

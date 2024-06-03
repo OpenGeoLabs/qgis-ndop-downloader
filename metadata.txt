@@ -10,9 +10,9 @@
 name=NDOP Downloader
 qgisMinimumVersion=3.0
 description=Stažení a import dat o výskytu druhů z NDOP AOPK. <br><br> Download and import species occurence data from SOD NCA.
-version=0.1.1-beta
+version=0.1.2
 author=Oto Kaláb
-email=oto.kalab@opengeolabs.cz
+email=kalab.oto@gmail.com
 
 about=
     NDOP Downloader allows download species occurence data from <a href="https://portal.nature.cz/nd/">The Species Occurrence Database NCA CR</a> (Nature Conservation Agency of the Czech Republic). Localisation (.shp compressed in .zip) and table data (.csv) will be downloaded for found records. Table data will be imported as point layer according the columns with coordinates.
@@ -31,7 +31,7 @@ repository=https://github.com/OpenGeoLabs/qgis-ndop-downloader
 
 # Uncomment the following line and add your changelog:
 changelog= 0.1.1-beta - fixed table download (issue #33)
-
+0.1.2 - fixed server url (issue #45)
 # Tags are comma separated with spaces allowed
 tags= species occurrence, download, ecology
 
@@ -39,7 +39,7 @@ homepage=https://opengeolabs.github.io/qgis-ndop-downloader/
 category=Web
 icon=icon.png
 # experimental flag
-experimental=True
+experimental=False
 
 # deprecated flag (applies to the whole plugin, not just a single version)
 deprecated=False

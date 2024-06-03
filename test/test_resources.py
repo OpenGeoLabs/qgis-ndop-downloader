@@ -8,7 +8,7 @@
 
 """
 
-__author__ = 'oto.kalab@opengeolabs.cz'
+__author__ = 'kalab.oto@gmail.com'
 __date__ = '2018-12-14'
 __copyright__ = 'Copyright 2018, Oto Kaláb'
 

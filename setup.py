@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Copyright (C) 2019 Oto Kaláb
-Contact: oto.kalab@opengeolabs.cz
+Contact: kalab.oto@gmail.com
 """
 
 from setuptools import setup
@@ -12,9 +12,9 @@ with open("requirements.txt") as f:
 
 setup(name='ndop-downloader',
         author='Oto Kaláb',
-        author_email='oto.kalab@opengeolabs.cz',
+        author_email='kalab.oto@gmail.com',
         maintainer="Oto Kaláb",
-        maintainer_email='oto.kalab@opengeolabs.cz',
+        maintainer_email='kalab.oto@gmail.com',
         url='https://github.com/OpenGeoLabs/qgis-ndop-downloader',
         description='NDOP Downloader is an application for downloading of records of occurence from official database of the Nature Conservation Agency of the Czech Republic (Nálezová databáze Agentury ochrany přírody a krajiny ČR - NDOP - AOPK).',
         version="0.1.8",
