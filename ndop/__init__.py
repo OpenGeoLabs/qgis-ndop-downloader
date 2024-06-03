@@ -8,9 +8,9 @@ from io import StringIO
 import csv
 
 LOGIN_URL = 'https://login.nature.cz/login.php?appid=59'
-SEARCH_URL = ('https://portal.nature.cz/nd/find.php?akce=seznam&opener='
+SEARCH_URL = ('https://portal23.nature.cz/nd/find.php?akce=seznam&opener='
              '&vztazne_id=0')
-LOCATIONS_URL = 'https://portal.nature.cz/nd/export_lokalizaci.php'
+LOCATIONS_URL = 'https://portal23.nature.cz/nd/export_lokalizaci.php'
 
 class NBException(Exception):
     pass
@@ -36,7 +36,7 @@ def list_of_val(filt_attr, keyword):
     """
     
     s = requests.Session()
-    url = ("https://portal.nature.cz/nd/nd_modals/"
+    url = ("https://portal23.nature.cz/nd/nd_modals/"
            "modals.php?opener={}&promka={}").format(filt_attr, keyword)
     tax = s.get(url).text
     json_string = tax[9:-1]
@@ -286,7 +286,7 @@ def get_ndop_csv_data(s,num_rec,table_payload,output_name):
         
         counter+=1
         table_url = (
-            'https://portal.nature.cz/nd/find.php?'
+            'https://portal23.nature.cz/nd/find.php?'
             'akce=seznam&opener=&vztazne_id=0&order=ID_ND_NALEZ'
             '&orderhow=DESC&frompage={frompage}&pagesize=500&'
             'filtering=&searching=&export=1&ndtoken={ndtoken}'

@@ -7,7 +7,7 @@ import csv
 
 def get_cdb(filt_par):
     s = requests.Session()
-    url = ("https://portal.nature.cz/nd/nd_modals/"
+    url = ("https://portal23.nature.cz/nd/nd_modals/"
            "modals.php?opener={}&promka=").format(filt_par)
     ls = s.get(url).text
     json_string = ls[9:-1]
