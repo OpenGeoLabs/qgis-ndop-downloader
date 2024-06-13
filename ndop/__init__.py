@@ -207,7 +207,8 @@ def login(username, password):
 
 def search_filter(s,search_payload):
     print("Filtering...")
-# filter_page = s.post(SEARCH_URL, data=search_payload)
+    # filtering failed without sending post twice
+    filter_page = s.post(SEARCH_URL, data=search_payload)
 
     #prevent URL encoding to get strings like `BERAN+V.+%282009%29+` and not `BERAN%2BV.%2B%282009%29%2B`
     payload_str = "&".join("%s=%s" % (k,v) for k,v in search_payload.items())
