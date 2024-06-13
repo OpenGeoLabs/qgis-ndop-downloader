@@ -125,7 +125,7 @@ def get_search_pars(
         'rfSpatialX': '',
         'but_action': 'Filtrovat',
         'but_co': 'rf',
-        'pagesizeX': 500
+        'pagesizeX': 10000
     }
 	
     if polygon is not None:
@@ -275,20 +275,20 @@ def get_ndop_csv_data(s,num_rec,table_payload,output_name):
     counter = 0
     print("Downloading records: ")
 
-    for i in range(0, num_rec, 500):
-        if i + 500 < num_rec:
-            to = i + 500
+    for i in range(0, num_rec, 10000):
+        if i + 10000 < num_rec:
+            to = i + 10000
         else:
             to = num_rec
         print("{} - {}".format(i+1, to))
-        if num_rec == i + 500:
+        if num_rec == i + 10000:
             print(num_rec)
         
         counter+=1
         table_url = (
             'https://portal23.nature.cz/nd/find.php?'
             'akce=seznam&opener=&vztazne_id=0&order=ID_ND_NALEZ'
-            '&orderhow=DESC&frompage={frompage}&pagesize=500&'
+            '&orderhow=DESC&frompage={frompage}&pagesize=10000&'
             'filtering=&searching=&export=1&ndtoken={ndtoken}'
         ).format(frompage=str(i), ndtoken=table_payload['ndtokenexport'])
 
