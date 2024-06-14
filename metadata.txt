@@ -10,7 +10,7 @@
 name=NDOP Downloader
 qgisMinimumVersion=3.0
 description=Stažení a import dat o výskytu druhů z NDOP AOPK. <br><br> Download and import species occurence data from SOD NCA.
-version=0.1.3
+version=0.1.4
 author=Oto Kaláb
 email=kalab.oto@gmail.com
 
