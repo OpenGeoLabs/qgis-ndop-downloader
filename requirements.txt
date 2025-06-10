@@ -1,4 +1,4 @@
-requests==2.32.2
+requests==2.32.4
 Fiona==1.8.4
 
 
