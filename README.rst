@@ -1,6 +1,17 @@
 NDOP Downloader
 ===============
 
+.. warning::
+
+   ⚠️ **Deprecation Notice**
+
+   The package `ndop-downloader` has been **renamed to `ndop`**.
+   Please install the new package instead:
+
+   .. code-block:: bash
+
+      pip install ndop
+
 NDOP Downloader is an application for downloading of records of species
 occurence from official database of the Nature Conservation Agency of
 the Czech Republic `Nálezová databáze ochrany přírody AOPK ČR
