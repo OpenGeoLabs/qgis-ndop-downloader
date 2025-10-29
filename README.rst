@@ -26,6 +26,5 @@ Changelog
 0.1.9
 - Deprecation release
 - Added warning to migrate to 'ndop'
-- License changed to MIT
 
 0.1.8 - fixed bug: header and first line missing in table download (issue #33)
