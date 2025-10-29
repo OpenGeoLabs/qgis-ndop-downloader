@@ -6,6 +6,17 @@ import urllib
 import json
 from io import StringIO
 import csv
+import warnings
+
+warnings.warn(
+    "The 'ndop-downloader' package has been renamed to 'ndop'. "
+    "Please install the new package with:\n\n"
+    "    pip install ndop\n\n"
+    "This version (0.1.9) is the final release of 'ndop-downloader'. "
+    "Future updates will continue under 'ndop'.",
+    DeprecationWarning,
+    stacklevel=2,
+)
 
 LOGIN_URL = 'https://login.nature.cz/login.php?appid=59'
 SEARCH_URL = ('https://portal23.nature.cz/nd/find.php?akce=seznam&opener='
